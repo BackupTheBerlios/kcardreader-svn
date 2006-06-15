@@ -1,0 +1,47 @@
+Requirement:
+===========
+- Qt 4.1.x or higher (http://www.trolltech.com)
+- libchipcard 2.1.4 or higher (http://www.libchipcard.com)
+- gwenhywfar-2.2.0 or higher (http://gwenhywfar.sf.net/)
+
+Installation for Linux user:
+====================
+- install Qt 4.1.x (have you another distribuiton as SuSE, Mandrake, RedHat, Debian, Gentoo, get the source package of Qt 4.1.x and compile self)
+- install gwenhywfar 2.2.0
+        ./configure --prefix=/usr && make && su -c "make install"
+- then install libchipcard 2.1.4
+        ./configure --prefix=/usr && make && su -c "make install"
+
+- extract qcardreader-0.0.1.tar.gz
+- open a shell console (like: konsole)
+- go into folder, where is your exctraced tar archive
+- enter the follow comand: qmake && make
+- if compile complet without error, no errors might emerge :-) go to sub folder bin and enter the following command: ./qrc
+- it is not make install requirement
+
+Installation for Windows user:
+====================
+- install Qt 4.1.x 
+- install gwenhywfar 2.2.0
+- then install libchipcard 2.1.4
+
+- extract qcardreader-0.0.1.tar.gz
+- open a shell console (Start->Execute (Ausführen)->cmd and press enter)
+- go into folder, where is your exctraced tar archive
+- enter the follow comand:
+        qmake
+        nmake or mingw32-make
+- if compile complet without error, no errors might emerge :-) go to sub folder bin and enter the following command: ./qrc
+- or you use the precompiled binary (it is the easiest way)
+
+that is it, have fun ;-)
+
+Find you Bugs, please let me now, write a mail or use the mailinglist.
+Mail: alex dot saal at gmx dot de (in german or english)
+Mailinglist Bugreport: qcardreader-bug@berlios.de
+Mailinglist Feedback: qcardreader-feedback@berlios.de
+Mailinglist Help: qcardreader-help@berlios.de
+
+
+regards/kinds
+Alexander Saal
