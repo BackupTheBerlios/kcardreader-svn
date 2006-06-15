@@ -30,7 +30,9 @@
 QCardReaderLogin::QCardReaderLogin( QWidget *parent, Qt::WFlags flags ) : QWidget( parent, flags )
 {
         setupUi( this );
-        
+
+        connect( btnApply, SIGNAL( clicked() ), this, SLOT( slotApply() ) );
+
         QDesktopWidget *desktop = qApp->desktop();
         const QRect rect = desktop->availableGeometry( desktop->primaryScreen() );
         int left = ( rect.width() - width() ) / 2;
@@ -44,4 +46,9 @@ QCardReaderLogin::~QCardReaderLogin()
 void QCardReaderLogin::closeEvent( QCloseEvent *e )
 {
     e->accept();
+}
+
+void QCardReaderLogin::slotApply()
+{
+    
 }

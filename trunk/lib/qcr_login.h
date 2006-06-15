@@ -32,6 +32,7 @@ class QCardReaderLogin : public QWidget, public Ui::UiQCardReaderLogin
         ~QCardReaderLogin();
 
     private slots:
+       void slotApply();
     
     protected:
         void closeEvent( QCloseEvent *e );

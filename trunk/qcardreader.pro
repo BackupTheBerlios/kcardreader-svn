@@ -67,9 +67,6 @@ unix{
   MOC_DIR += .unix/moc
   OBJECTS_DIR += .unix/obj
   UI_DIR += .unix/ui
-  LIBS += -lchipcard2d -L/usr/lib
-  LIBS += -lchipcard2c -L/usr/lib
-  LIBS += -lchipcard2i -L/usr/lib
-  LIBS += -lchipcard2sv -L/usr/lib
-  LIBS += -lgwenhywfar -L/usr/lib
+  LIBS += -L/usr/lib -lchipcard2c
+  LIBS += -L/usr/lib -lgwenhywfar
 }
