@@ -53,5 +53,4 @@ void QCardReader::slotKVKCard()
 {
     QCRChipCard *qcrc = new QCRChipCard();
     qcrc->getKVKCardData( listWidgetLogMessage );
-    delete qcrc;
 }
