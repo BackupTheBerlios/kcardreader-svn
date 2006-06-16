@@ -344,7 +344,7 @@
         </spacer>
        </item>
        <item row="8" column="1" colspan="2" >
-        <widget class="QPushButton" name="pushButton" >
+        <widget class="QPushButton" name="btnKVKCardInfo" >
          <property name="minimumSize" >
           <size>
            <width>110</width>
@@ -952,7 +952,7 @@
      <number>6</number>
     </property>
     <item row="0" column="0" >
-     <widget class="QListWidget" name="listWidget" />
+     <widget class="QListWidget" name="listWidgetLogMessage" />
     </item>
    </layout>
   </widget>
@@ -975,7 +975,7 @@
   <tabstop>lineEdit_11</tabstop>
   <tabstop>lineEdit_10</tabstop>
   <tabstop>lineEdit_13</tabstop>
-  <tabstop>pushButton</tabstop>
+  <tabstop>btnKVKCardInfo</tabstop>
   <tabstop>tabWidget_6</tabstop>
   <tabstop>tabWidget_4</tabstop>
   <tabstop>tabWidget_7</tabstop>

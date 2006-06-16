@@ -44,6 +44,11 @@
 QCRChipCard::QCRChipCard()
 {}
 
+QCRChipCard::~QCRChipCard()
+{
+    delete qlwItem;
+}
+
 /*
  * TODO Public
  */
@@ -60,71 +65,77 @@ QStringList QCRChipCard::getKVKCardData( QListWidget *qlw )
     GWEN_DB_NODE *dbData;
     int rv;
 
-    if ( init( cl ) ) {
-	res = LC_Client_StartWait( cl, 0, 0 );
-	if (res != LC_Client_ResultOk) {
-	    errorMsg( card, res, qlw );
-	    deinit( card, res );
-	    return kvkCardData;
-	}
-	
-	QMessageBox::information( 0, "QCardReader",  "Please insert a German medical card." );
-	card = LC_Client_WaitForNextCard( cl, 30 );
-	if ( !card ) {
-	    QMessageBox::critical( 0, "QCardReader",  "No card found.");
-	    errorMsg( card, res, qlw );
-	    LC_Client_StopWait(cl);
-	    deinit( card, res );
-	    return kvkCardData;
-	}
-	
-	qlwItem = new QListWidgetItem( qlw );
-	qlwItem->setText( "INFO: Telling the server that we need no more cards." );
-
-	res = LC_Client_StopWait( cl );
-	if ( res!=LC_Client_ResultOk ) {
-	    errorMsg( card, res, qlw );
-	    deinit( card, res );
-	    return kvkCardData;
-	}
-	
-	rv = LC_KVKCard_ExtendCard( card );
-	if ( rv ) {
-	    QMessageBox::warning( 0, "QCardReader",  "Could not extend card as German medical card, abort");
-	    errorMsg( card, res, qlw );
-	    deinit( card, res );
-	    return kvkCardData;
-	}
-
-	qlwItem = new QListWidgetItem( qlw );
-	qlwItem->setText( "INFO:  Opening card." );
-	
-	res = LC_Card_Open( card );
-	if ( res != LC_Client_ResultOk ) {
-	    QMessageBox::critical( 0, "QCardReader",  "Error executing command CardOpen." );
-	    errorMsg( card, res, qlw );
-	    deinit( card, res );
-	    return kvkCardData;
-	}
-	
-	dbData = LC_KVKCard_GetCardData( card );
-	if ( !dbData ) {
-	    QMessageBox::critical( 0, "QCardReader",  "No card data available." );
-	    errorMsg( card, res, qlw );
-	    deinit( card, res );
-	    return kvkCardData;
-	}
-	
-	qlwItem = new QListWidgetItem( qlw );
-	qlwItem->setText( "INFO:  I got this card." );
-	//kvkCardData.append( dbData );
-	
-	return kvkCardData;
-    } else {
+    cl = LC_Client_new( "QCardReader", "0.0.1", 0 );
+    if( LC_Client_ReadConfigFile( cl, 0 ) ) {
+	qDebug() << "ERROR: Error reading configuration.\n";
+	qDebug() << errorMsg( card, res, qlw );
 	deinit( card, res );
+	LC_Client_free(cl);
 	return kvkCardData;
     }
-    
+
+    res = LC_Client_StartWait( cl, 0, 0 );
+    if ( res != LC_Client_ResultOk ) {
+        errorMsg( card, res, qlw );
+        deinit( card, res );
+        return kvkCardData;
+    }
+
+    QMessageBox::information( 0, "QCardReader", "Please insert a German medical card." );
+    card = LC_Client_WaitForNextCard( cl, 30 );
+    if ( !card ) {
+        QMessageBox::critical( 0, "QCardReader", "No card found." );
+        errorMsg( card, res, qlw );
+        LC_Client_StopWait( cl );
+        deinit( card, res );
+        return kvkCardData;
+    }
+
+    qlwItem = new QListWidgetItem( qlw );
+    qlwItem->setText( "INFO: Telling the server that we need no more cards." );
+
+    res = LC_Client_StopWait( cl );
+    if ( res != LC_Client_ResultOk ) {
+        qlwItem = new QListWidgetItem( qlw );
+        qlwItem->setText( "ERROR:  " + errorMsg( card, res, qlw ) );        
+        deinit( card, res );
+        return kvkCardData;
+    }
+
+    rv = LC_KVKCard_ExtendCard( card );
+    if ( rv ) {
+        QMessageBox::warning( 0, "QCardReader", "Could not extend card as German medical card, abort" );
+        qlwItem = new QListWidgetItem( qlw );
+        qlwItem->setText( "ERROR:  " + errorMsg( card, res, qlw ) );        
+        deinit( card, res );
+        return kvkCardData;
+    }
+
+    qlwItem = new QListWidgetItem( qlw );
+    qlwItem->setText( "INFO:  Opening card." );
+
+    res = LC_Card_Open( card );
+    if ( res != LC_Client_ResultOk ) {
+        QMessageBox::critical( 0, "QCardReader", "Error executing command CardOpen." );
+        qlwItem = new QListWidgetItem( qlw );
+        qlwItem->setText( "ERROR:  " + errorMsg( card, res, qlw ) );        
+        deinit( card, res );
+        return kvkCardData;
+    }
+
+    dbData = LC_KVKCard_GetCardData( card );
+    if ( !dbData ) {
+        QMessageBox::critical( 0, "QCardReader", "No card data available." );
+        qlwItem = new QListWidgetItem( qlw );
+        qlwItem->setText( "ERROR:  " + errorMsg( card, res, qlw ) );
+        deinit( card, res );
+        return kvkCardData;
+    }
+
+    qlwItem = new QListWidgetItem( qlw );
+    qlwItem->setText( "INFO:  I got this card." );
+    //kvkCardData.append( dbData );
+
     return kvkCardData;
 }
 
@@ -146,17 +157,6 @@ QString QCRChipCard::getProcessorCardData( QListWidget *qlw )
 /*
  * TODO Private
  */
-bool QCRChipCard::init( LC_CLIENT * cl )
-{
-    cl = LC_Client_new( "QCardReader", "0.0.1", 0 );
-    if ( LC_Client_ReadConfigFile( cl, 0 ) )
-        return true;
-    else
-        LC_Client_free( cl );
-
-    return false;
-}
-
 bool QCRChipCard::deinit( LC_CARD *card, LC_CLIENT_RESULT res )
 {
     res = LC_Card_Close( card );
@@ -213,9 +213,10 @@ QString QCRChipCard::errorMsg( LC_CARD *card, LC_CLIENT_RESULT res, QListWidget 
         sw1 = LC_Card_GetLastSW1( card );
         sw2 = LC_Card_GetLastSW2( card );
         qlwItem = new QListWidgetItem( qlw );
-        if ( sw1 != -1 && sw2 != -1 ) qlwItem->setText( "Last card command result: SW1= " + QString( sw1) + ", SW2 = " + QString( sw2 ) );
+        if ( sw1 != -1 && sw2 != -1 )
+            qlwItem->setText( "Last card command result: SW1= " + QString( sw1 ) + ", SW2 = " + QString( sw2 ) );
 
-        s = LC_Card_GetLastResult( card );	
+        s = LC_Card_GetLastResult( card );
         qlwItem = new QListWidgetItem( qlw );
         qlwItem->setText( "Result: " + s );
 

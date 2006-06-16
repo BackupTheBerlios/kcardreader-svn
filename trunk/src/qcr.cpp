@@ -31,7 +31,9 @@
 QCardReader::QCardReader( QWidget *parent, Qt::WFlags flags ) : QWidget( parent, flags )
 {
         setupUi( this );
-        
+	
+        connect( btnKVKCardInfo, SIGNAL( clicked() ), this, SLOT( slotKVKCard() ) );
+
         QDesktopWidget *desktop = qApp->desktop();
         const QRect rect = desktop->availableGeometry( desktop->primaryScreen() );
         int left = ( rect.width() - width() ) / 2;
@@ -45,4 +47,11 @@ QCardReader::~QCardReader()
 void QCardReader::closeEvent( QCloseEvent *e )
 {
     e->accept();
+}
+
+void QCardReader::slotKVKCard()
+{
+    QCRChipCard *qcrc = new QCRChipCard();
+    qcrc->getKVKCardData( listWidgetLogMessage );
+    delete qcrc;
 }

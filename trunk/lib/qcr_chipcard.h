@@ -19,7 +19,7 @@
 /* Chipcard2/Gwen include */
 #include <chipcard2/chipcard2.h>
 #include <chipcard2-client/client/client.h>
-
+#include <chipcard2-client/client/card.h>
 
 /* Qt4 include files */
 #include <QtCore>
@@ -29,7 +29,7 @@ class QCRChipCard
 {
     public:
         QCRChipCard();
-        inline virtual ~QCRChipCard() {}
+        ~QCRChipCard();
 
         QString getDDVCardData( QListWidget *qlw );
         QStringList getKVKCardData( QListWidget *qlw );

@@ -32,6 +32,7 @@ class QCardReader : public QWidget, public Ui::UiQCardReader
         ~QCardReader();
 
     private slots:
+        void slotKVKCard();
     
     protected:
         void closeEvent( QCloseEvent *e );

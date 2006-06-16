@@ -25,6 +25,15 @@ RESOURCES += res/qcr.qrc
 CONFIG += debug thread warn_on qt
 QT += xml
 
+TARGET = qcardreader
+#QMAKE_POST_LINK = strip -s bin/qcardreader
+RCC_DIR = .rcc
+MOC_DIR += .moc
+OBJECTS_DIR += .obj
+UI_DIR += .ui
+LIBS += -L/usr/lib -lchipcard2c
+LIBS += -L/usr/lib -lgwenhywfar
+
 # Project Ui files
 FORMS += ui/qcardreader.ui
 FORMS += ui/login.ui
@@ -58,15 +67,3 @@ HEADERS += 3rdparty/XMLPreferences.h
 SOURCES += 3rdparty/Base64.cpp
 SOURCES += 3rdparty/XMLPreferences.cpp
 SOURCES += 3rdparty/XMLWriter.cpp 
-
-# Unix/Linux settings
-unix{
-  TARGET = qcardreader
-  #QMAKE_POST_LINK = strip -s bin/qcardreader
-  RCC_DIR = .unix/rcc
-  MOC_DIR += .unix/moc
-  OBJECTS_DIR += .unix/obj
-  UI_DIR += .unix/ui
-  LIBS += -L/usr/lib -lchipcard2c
-  LIBS += -L/usr/lib -lgwenhywfar
-}
