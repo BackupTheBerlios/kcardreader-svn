@@ -17,6 +17,7 @@
 */
 
 /* Chipcard2/Gwen include */
+#include <gwenhywfar/db.h>
 #include <chipcard2/chipcard2.h>
 #include <chipcard2-client/client/client.h>
 #include <chipcard2-client/client/card.h>
@@ -32,16 +33,17 @@ class QCRChipCard
         ~QCRChipCard();
 
         QString getDDVCardData( QListWidget *qlw );
-        QStringList getKVKCardData( QListWidget *qlw );
+        QMap<QString, QString> getKVKCardData( QListWidget *qlw );
         QString getMemoryCardData( QListWidget *qlw );
-        QString getMoneyCardData( QListWidget *qlw );
+        QStringList getMoneyCardData( QListWidget *qlw );
         QString getProcessorCardData( QListWidget *qlw );
 	
     private:
         bool init( LC_CLIENT * cl );
         bool deinit( LC_CARD *card, LC_CLIENT_RESULT res );
         QString errorMsg( LC_CARD *card, LC_CLIENT_RESULT res, QListWidget *qlw );
-	
+
         QListWidgetItem *qlwItem;
-        QStringList kvkCardData;
+        QMap<QString, QString> kvkCardData;
+        QStringList moneyCardData;
 };

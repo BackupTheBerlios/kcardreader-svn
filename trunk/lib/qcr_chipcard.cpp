@@ -46,6 +46,7 @@ QCRChipCard::QCRChipCard()
 
 QCRChipCard::~QCRChipCard()
 {
+    kvkCardData.clear();
     delete qlwItem;
 }
 
@@ -57,8 +58,10 @@ QString QCRChipCard::getDDVCardData( QListWidget *qlw )
     return "";
 }
 
-QStringList QCRChipCard::getKVKCardData( QListWidget *qlw )
+QMap<QString, QString> QCRChipCard::getKVKCardData( QListWidget *qlw )
 {
+    qlw->clear();
+
     LC_CLIENT * cl;
     LC_CARD *card = 0;
     LC_CLIENT_RESULT res;
@@ -81,7 +84,7 @@ QStringList QCRChipCard::getKVKCardData( QListWidget *qlw )
     }
 
     QMessageBox::information( 0, "QCardReader", "Please insert a German medical card." );
-    card = LC_Client_WaitForNextCard( cl, 1 );
+    card = LC_Client_WaitForNextCard( cl, 30 );
     if ( !card ) {
         QMessageBox::critical( 0, "QCardReader", "No card found." );
         errorMsg( card, res, qlw );
@@ -101,8 +104,8 @@ QStringList QCRChipCard::getKVKCardData( QListWidget *qlw )
         return kvkCardData;
     }
 
-    rv = LC_KVKCard_ExtendCard( card);
-    if (  rv ) {
+    rv = LC_KVKCard_ExtendCard( card );
+    if ( rv ) {
         QMessageBox::warning( 0, "QCardReader", "Could not extend card as German medical card, abort" );
         deinit( card, res );
         return kvkCardData;
@@ -129,14 +132,40 @@ QStringList QCRChipCard::getKVKCardData( QListWidget *qlw )
 
     qlwItem = new QListWidgetItem( qlw );
     qlwItem->setText( "INFO:  Get card data ..." );
-    
-    //kvkCardData.append( dbData );
 
+    QString tmpFile;
+    tmpFile = QDir::homePath();
+    tmpFile.append( "/.qcardreader/kvkcard.tmp" );
+
+    GWEN_DB_WriteFile( dbData, tmpFile.toAscii(), GWEN_DB_FLAGS_OVERWRITE_VARS );
+    
+    QFile f( tmpFile );
+
+    if ( !f.open( QIODevice::ReadOnly | QIODevice::Text ) ) {
+        return kvkCardData;
+    }
+
+    QTextStream in( &f );
+    QString line;
+    QStringList tmpList, tmpList1;
+    
+    while ( !in.atEnd() ) {
+        line = in.readLine();
+        tmpList = line.split( "=" );
+        tmpList1 = tmpList.value( 0 ).split( " " );
+        kvkCardData[ tmpList1.value( 1 ) ] = tmpList.value( 1 );
+    }
+
+    f.close();    
+    f.remove();    
+    
+    qlwItem = new QListWidgetItem( qlw );
+    qlwItem->setText( "INFO:  Get card data ... done" );
+   
     qlwItem = new QListWidgetItem( qlw );
     qlwItem->setText( "INFO:  Close card and free memory ..." );
     deinit( card, res );
     LC_Client_free( cl );
-
     return kvkCardData;
 }
 
@@ -145,9 +174,9 @@ QString QCRChipCard::getMemoryCardData( QListWidget *qlw )
     return "";
 }
 
-QString QCRChipCard::getMoneyCardData( QListWidget *qlw )
+QStringList QCRChipCard::getMoneyCardData( QListWidget *qlw )
 {
-    return "";
+    return moneyCardData;
 }
 
 QString QCRChipCard::getProcessorCardData( QListWidget *qlw )
