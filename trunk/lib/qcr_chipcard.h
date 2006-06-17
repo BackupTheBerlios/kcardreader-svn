@@ -33,17 +33,22 @@ class QCRChipCard
         ~QCRChipCard();
 
         QString getDDVCardData( QListWidget *qlw );
-        QMap<QString, QString> getKVKCardData( QListWidget *qlw );
         QString getMemoryCardData( QListWidget *qlw );
-        QStringList getMoneyCardData( QListWidget *qlw );
         QString getProcessorCardData( QListWidget *qlw );
-	
+        QString getLibchipcardVersion();
+
+        QMap<QString, QString> getKVKCardData( QListWidget *qlw );
+        QStringList getMoneyCardData( QListWidget *qlw );
+        QStringList getMoneyCardAccData( QListWidget *qlw );
+        QMap<QString, float> getMoneyCardMoneyData( QListWidget *qlw );
+
     private:
         bool init( LC_CLIENT * cl );
-        bool deinit( LC_CARD *card, LC_CLIENT_RESULT res );
+        bool deinit( LC_CARD *card, LC_CLIENT * cl, LC_CLIENT_RESULT res );
         QString errorMsg( LC_CARD *card, LC_CLIENT_RESULT res, QListWidget *qlw );
 
         QListWidgetItem *qlwItem;
+        QStringList moneyCardData, moneyCardAccData;
         QMap<QString, QString> kvkCardData;
-        QStringList moneyCardData;
+        QMap<QString, float> moneyCardMoneyData;
 };

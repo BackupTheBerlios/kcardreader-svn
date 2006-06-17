@@ -2,26 +2,19 @@
 <!DOCTYPE KDevPrjSession>
 <KDevPrjSession>
  <DocsAndViews NumberOfDocuments="3" >
-  <Doc0 NumberOfViews="1" URL="file:///home/alex/project/qcardreader/lib/qcr_chipcard.cpp" >
-   <View0 line="155" Type="Source" />
+  <Doc0 NumberOfViews="1" URL="file:///home/alex/project/qcardreader/lib/qcr_chipcard.h" >
+   <View0 line="50" Type="Source" />
   </Doc0>
-  <Doc1 NumberOfViews="1" URL="file:///home/alex/project/qcardreader/lib/qcr_chipcard.h" >
-   <View0 line="46" Type="Source" />
+  <Doc1 NumberOfViews="1" URL="file:///home/alex/project/qcardreader/lib/qcr_chipcard.cpp" >
+   <View0 line="404" Type="Source" />
   </Doc1>
   <Doc2 NumberOfViews="1" URL="file:///home/alex/project/qcardreader/src/qcr.cpp" >
-   <View0 line="60" Type="Source" />
+   <View0 line="105" Type="Source" />
   </Doc2>
  </DocsAndViews>
  <pluginList>
   <kdevdebugger>
-   <breakpointList>
-    <breakpoint0 location="/home/alex/project/qcardreader/lib/qcr_chipcard.cpp:61" type="1" tracingFormatString="" traceFormatStringEnabled="0" condition="" tracingEnabled="0" enabled="1" >
-     <tracedExpressions/>
-    </breakpoint0>
-    <breakpoint1 location="/home/alex/project/qcardreader/src/qcr.cpp:63" type="1" tracingFormatString="" traceFormatStringEnabled="0" condition="" tracingEnabled="0" enabled="1" >
-     <tracedExpressions/>
-    </breakpoint1>
-   </breakpointList>
+   <breakpointList/>
    <showInternalCommands value="0" />
   </kdevdebugger>
   <kdevbookmarks>

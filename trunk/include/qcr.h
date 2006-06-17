@@ -32,6 +32,8 @@ class QCardReader : public QWidget, public Ui::UiQCardReader
         ~QCardReader();
 
     private slots:
+        void slotMoneyCard();
+        void slotMoneyCardLoad();
         void slotKVKCard();
     
     protected:

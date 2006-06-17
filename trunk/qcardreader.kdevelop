@@ -121,6 +121,7 @@
   <kdevcppsupport>
     <references>
       <pcs>Qt4</pcs>
+      <pcs>LibChipCard2</pcs>
     </references>
     <codecompletion>
       <automaticCodeCompletion>false</automaticCodeCompletion>

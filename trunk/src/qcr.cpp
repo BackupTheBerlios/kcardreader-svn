@@ -33,6 +33,8 @@ QCardReader::QCardReader( QWidget *parent, Qt::WFlags flags ) : QWidget( parent,
     setupUi( this );
 
     connect( btnKVKCardInfo, SIGNAL( clicked() ), this, SLOT( slotKVKCard() ) );
+    connect( btnMoneyCardInfo, SIGNAL( clicked() ), this, SLOT( slotMoneyCard() ) );
+    connect( btnMoneyCardLoad, SIGNAL( clicked() ), this, SLOT( slotMoneyCardLoad() ) );
 
     QDesktopWidget *desktop = qApp->desktop();
     const QRect rect = desktop->availableGeometry( desktop->primaryScreen() );
@@ -49,6 +51,79 @@ void QCardReader::closeEvent( QCloseEvent *e )
     e->accept();
 }
 
+void QCardReader::slotMoneyCard()
+{
+    QStringList moneyMap, moneyMapAcc, tmpList;
+
+    QCRChipCard *qcrc = new QCRChipCard();
+    moneyMap = qcrc->getMoneyCardData( listWidgetLogMessage );
+
+    if ( moneyMap.size() <= 0 )
+        return ;
+
+    for ( int x = 0; x < moneyMap.size(); x++ ) {
+        tmpList = moneyMap.value( x ).split( ";" );
+        if ( tmpList.value( 0 ) == "branchKey" ) {
+            lineEditMoneyCardBranchKey->setText( tmpList.value( 1 ) );
+
+        } else if ( tmpList.value( 0 ) == "shortBankCode" ) {
+            lineEditMoneyCardShortBankcode->setText( tmpList.value( 1 ) );
+
+        } else if ( tmpList.value( 0 ) == "cardNumber" ) {
+            lineEditMoneyCardCardNumber->setText( tmpList.value( 1 ) );
+
+        } else if ( tmpList.value( 0 ) == "checksum" ) {
+            lineEditMoneyCardCheckSum->setText( tmpList.value( 1 ) );
+
+        } else if ( tmpList.value( 0 ) == "validUntil" ) {
+            lineEditMoneyCardValidUntil->setText( tmpList.value( 1 ) );
+
+        } else if ( tmpList.value( 0 ) == "validSince" ) {
+            lineEditMoneyCardValidSince->setText( tmpList.value( 1 ) );
+
+        } else if ( tmpList.value( 0 ) == "country" ) {
+            lineEditMoneyCardCountry->setText( tmpList.value( 1 ) );
+
+        } else if ( tmpList.value( 0 ) == "currency" ) {
+            lineEditMoneyCardCurrency->setText( tmpList.value( 1 ) );
+
+        } else if ( tmpList.value( 0 ) == "factor" ) {
+            lineEditMoneyCardFactor->setText( tmpList.value( 1 ) );
+
+        } else if ( tmpList.value( 0 ) == "chipversion" ) {
+            lineEditMoneyCardChipVersion->setText( tmpList.value( 1 ) );
+
+        }
+    }
+
+    tmpList.clear();
+    moneyMapAcc = qcrc->getMoneyCardAccData( listWidgetLogMessage );
+
+    if ( moneyMapAcc.size() <= 0 )
+        return ;
+
+    for ( int x = 0; x < moneyMapAcc.size(); x++ ) {
+        tmpList = moneyMapAcc.value( x ).split( ";" );
+        if ( tmpList.value( 0 ) == "cardType" )
+            lineEditMoneyCardCardType->setText( tmpList.value( 1 ) );
+
+        if ( tmpList.value( 0 ) == "bankCode" )
+            lineEditMoneyCardBankCode->setText( tmpList.value( 1 ) );
+
+        if ( tmpList.value( 0 ) == "accountId" )
+            lineEditMoneyCardAccountId->setText( tmpList.value( 1 ) );
+    }
+
+}
+
+void QCardReader::slotMoneyCardLoad()
+{
+    QMap<QString, float> moneyLoadMap;
+    QCRChipCard *qcrc = new QCRChipCard();
+    moneyLoadMap = qcrc->getMoneyCardMoneyData( listWidgetLogMessage );
+    return ;
+}
+
 void QCardReader::slotKVKCard()
 {
     QMap<QString, QString> kvkMap;
@@ -56,59 +131,52 @@ void QCardReader::slotKVKCard()
     QCRChipCard *qcrc = new QCRChipCard();
     kvkMap = qcrc->getKVKCardData( listWidgetLogMessage );
 
-    if( kvkMap.size() <= 0 )
-	return;
-    
-    
+    if ( kvkMap.size() <= 0 )
+        return ;
+
     QMap<QString, QString>::const_iterator c_it = kvkMap.begin();
     while ( c_it != kvkMap.end() ) {
-	if( c_it.key() == "insuranceCompanyName" )
-	    lineEditCompanyName->setText( c_it.value() );
+        if ( c_it.key() == "insuranceCompanyName" )
+            lineEditGHICCompanyName->setText( c_it.value() );
 
-	if( c_it.key() == "insuranceCompanyCode" )
-	    lineEditCompanyCode->setText( c_it.value() );
+        if ( c_it.key() == "insuranceCompanyCode" )
+            lineEditGHICCompanyCode->setText( c_it.value() );
 
-	if( c_it.key() == "cardNumber" )
-	    lineEditCardNumber->setText( c_it.value() );
-    
-	if( c_it.key() == "insuranceNumber" )
-	    lineEditInsuranceNumber->setText( c_it.value() );
+        if ( c_it.key() == "cardNumber" )
+            lineEditGHICCardNumber->setText( c_it.value() );
 
-	if( c_it.key() == "insuranceState" )
-	    lineEditInsuranceState->setText( c_it.value() );
+        if ( c_it.key() == "insuranceNumber" )
+            lineEditGHICInsuranceNumber->setText( c_it.value() );
 
-	if( c_it.key() == "eastOrWest" )
-	    lineEditEastOrWest->setText( c_it.value() );
+        if ( c_it.key() == "insuranceState" )
+            lineEditGHICInsuranceState->setText( c_it.value() );
 
-	if( c_it.key() == "foreName" )
-	    lineEditForeName->setText( c_it.value() );
+        if ( c_it.key() == "eastOrWest" )
+            lineEditGHICEastOrWest->setText( c_it.value() );
 
-	if( c_it.key() == "name" )
-	    lineEditName->setText( c_it.value() );
+        if ( c_it.key() == "foreName" )
+            lineEditGHICForeName->setText( c_it.value() );
 
-	if( c_it.key() == "dateOfBirth" )
-	    lineEditDateOfBirth->setText( c_it.value() );
+        if ( c_it.key() == "name" )
+            lineEditGHICName->setText( c_it.value() );
 
-	if( c_it.key() == "addrStreet" )
-	    lineEditStreet->setText( c_it.value() );
+        if ( c_it.key() == "dateOfBirth" )
+            lineEditGHICDateOfBirth->setText( c_it.value() );
 
-	if( c_it.key() == "addrPostalCode" )
-	    lineEditPostalCode->setText( c_it.value() );
+        if ( c_it.key() == "addrStreet" )
+            lineEditGHICStreet->setText( c_it.value() );
 
-	if( c_it.key() == "addrCity" )
-	    lineEditCity->setText( c_it.value() );
+        if ( c_it.key() == "addrPostalCode" )
+            lineEditGHICPostalCode->setText( c_it.value() );
 
-	if( c_it.key() == "bestBefore" )
-	    lineEditValidUntil->setText( c_it.value() );
+        if ( c_it.key() == "addrCity" )
+            lineEditGHICCity->setText( c_it.value() );
 
-	if( c_it.key() == "checksum" or c_it.key() == "" )
-	    lineEditEastOrWest->setText( c_it.value() );
+        if ( c_it.key() == "bestBefore" )
+            lineEditGHICValidUntil->setText( c_it.value() );
+
+        if ( c_it.key() == "checksum" or c_it.key() == "" or c_it.key().isEmpty() )
+            lineEditGHICEastOrWest->setText( c_it.value() );
         ++c_it;
     }
 }
-
-
-
-
-
-

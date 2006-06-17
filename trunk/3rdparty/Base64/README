@@ -1,11 +1,9 @@
-The Base64 files are Copyright (C) 2005 Angius Fabrizio (blue_death@users.sourceforge.net)
+The base64.h and base64.cpp files are Copyright (C) 2005 Angius Fabrizio (blue_death@users.sourceforge.net)
 
-You may use, distribute and copy the Base64 files under the terms of
+You may use, distribute and copy the files under the terms of
 GNU General Public License version 2 (see the file LICENSE.GPL for details)
 
 -------------------------------------------------------------------------
-
-The Base64 class has been written during the development of the OSDaB Project.
 
 Website: http://osdab.sourceforge.net/
 SourceForge.net project page: https://sourceforge.net/projects/osdab/
@@ -22,6 +20,7 @@ Original version did not ignore padding-chars during decoding - see RFC 2045 ;)
 
 history
 -------
+09/06/2006 - Minor changes (documentation and binary compatibility)
 30/09/2005 - First public release
 
 features

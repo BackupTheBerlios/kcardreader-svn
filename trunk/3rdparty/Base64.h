@@ -1,8 +1,8 @@
 /****************************************************************************
-** Filename: Base64.h
-** Last updated [dd/mm/yyyy]: 29/09/2005
+** Filename: base64.h
+** Last updated [dd/mm/yyyy]: 09/06/2006
 **
-** Class for encoding/decoding of text using base 64 coding [Requires Qt4 - QtCore module].
+** Class for encoding/decoding of text using base 64 coding.
 **
 ** See RFC 2045 for details on base 64 coding.
 ** Code is based on the original GPLed work by Dawit Alemayehu and Rik Hemsley
@@ -27,23 +27,22 @@
 **
 **********************************************************************/
 
-#ifndef BASE64_H
-#define BASE64_H
+#ifndef OSDAB_BASE64_H
+#define OSDAB_BASE64_H
 
 class QString;
 class QBitArray;
 class QByteArray;
 
-class Base64 {
-    public:
-        static QByteArray decodeString( const QString& encoded );
-        static QBitArray decodeString( const QString& encoded, unsigned int size );
-        static QString encodeString( const QByteArray& decoded, bool limitLines = false );
-        static QString encodeString( const QBitArray& decoded, bool limitLines = false );
+class Base64Private;
 
-    private:
-        static const char mEncode[ 64 ];
-        static const char mDecode[ 128 ];
+class Base64
+{
+    public:
+        static QByteArray decode( const QString& encoded );
+        static QBitArray decode( const QString& encoded, unsigned int size );
+        static QString encode( const QByteArray& decoded, bool limitLines = false );
+        static QString encode( const QBitArray& decoded, bool limitLines = false );
 };
 
-#endif // BASE64_H
+#endif // OSDAB_BASE64_H
