@@ -123,7 +123,7 @@
       </rect>
      </property>
      <property name="currentIndex" >
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tabMoneyCard" >
       <attribute name="title" >
@@ -749,7 +749,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEditMoneyCardMinLoaded" >
+          <widget class="QLineEdit" name="lineEditMoneyCardCurrentLoaded" >
            <property name="cursor" >
             <cursor>0</cursor>
            </property>
@@ -1022,7 +1022,7 @@
           </item>
          </layout>
         </widget>
-        <widget class="QWidget" name="" >
+        <widget class="QWidget" name="widget" >
          <property name="geometry" >
           <rect>
            <x>340</x>
@@ -1141,7 +1141,7 @@
           </item>
          </layout>
         </widget>
-        <widget class="QWidget" name="" >
+        <widget class="QWidget" name="widget" >
          <property name="geometry" >
           <rect>
            <x>0</x>

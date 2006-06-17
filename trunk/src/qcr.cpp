@@ -117,10 +117,35 @@ void QCardReader::slotMoneyCard()
 
 void QCardReader::slotMoneyCardLoad()
 {
-    QMap<QString, float> moneyLoadMap;
+    QMap<QString, double> moneyLoadMap;
+    QStringList moneyTransList;
+    
     QCRChipCard *qcrc = new QCRChipCard();
     moneyLoadMap = qcrc->getMoneyCardMoneyData( listWidgetLogMessage );
-    return ;
+
+    if ( moneyLoadMap.size() <= 0 )
+        return ;
+    
+    QMap<QString, double>::const_iterator c_it = moneyLoadMap.begin();
+    QVariant value;
+    while ( c_it != moneyLoadMap.end() ) {
+	if ( c_it.key() == "loaded" ) {
+	    value = c_it.value();
+	    lineEditMoneyCardCurrentLoaded->setText( value.toString() + " Euro" );
+	}
+	if ( c_it.key() == "maxLoaded" ) {
+	    value = c_it.value();	 
+	    lineEditMoneyCardMaxLoaded->setText( value.toString() + " Euro" );
+	}
+	if ( c_it.key() == "maxTransfer" ) {
+	    value = c_it.value();	 
+	    lineEditMoneyCardMaxTransfer->setText( value.toString() + " Euro" );
+	}
+        ++c_it;
+    }
+    
+    
+    //moneyTransList = qcrc->getMoneyCardTransactionData( listWidgetLogMessage );
 }
 
 void QCardReader::slotKVKCard()

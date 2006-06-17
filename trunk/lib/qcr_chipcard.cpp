@@ -27,6 +27,11 @@
 #include <chipcard2-client/client/client.h>
 #include <chipcard2-client/cards/ddvcard.h>
 #include <chipcard2-client/cards/geldkarte.h>
+
+#include <chipcard2-client/cards/geldkarte_values.h>
+#include <chipcard2-client/cards/geldkarte_blog.h>
+#include <chipcard2-client/cards/geldkarte_llog.h>
+
 #include <chipcard2-client/cards/kvkcard.h>
 #include <chipcard2-client/cards/memorycard.h>
 #include <chipcard2-client/cards/processorcard.h>
@@ -48,7 +53,11 @@ QCRChipCard::QCRChipCard()
 /* TODO Destructor (clear all memory) */
 QCRChipCard::~QCRChipCard()
 {
+    moneyCardData.clear();
+    moneyCardAccData.clear();
+    moneyCardTransactionData.clear();
     kvkCardData.clear();
+    moneyCardMoneyData.clear();
     delete qlwItem;
 }
 
@@ -418,7 +427,7 @@ QStringList QCRChipCard::getMoneyCardAccData( QListWidget *qlw )
 }
 
 /* TODO Get money  from money card */
-QMap<QString, float> QCRChipCard::getMoneyCardMoneyData( QListWidget *qlw )
+QMap<QString, double> QCRChipCard::getMoneyCardMoneyData( QListWidget *qlw )
 {
     qlw->clear();
 
@@ -426,9 +435,6 @@ QMap<QString, float> QCRChipCard::getMoneyCardMoneyData( QListWidget *qlw )
     LC_CARD *card = 0;
     LC_CLIENT_RESULT res;
     LC_GELDKARTE_VALUES *values;
-    LC_GELDKARTE_BLOG *transBlog;
-    LC_GELDKARTE_BLOG_LIST2 *transBlogList;
-
     int rv;
 
     cl = LC_Client_new( "QCardReader", "0.0.1", 0 );
@@ -497,34 +503,112 @@ QMap<QString, float> QCRChipCard::getMoneyCardMoneyData( QListWidget *qlw )
         return moneyCardMoneyData;
     }
 
-    moneyCardMoneyData[ "loaded" ] = ( float ) LC_GeldKarte_Values_GetLoaded( values ) / 100.0;
-    moneyCardMoneyData[ "maxLoaded" ] = ( float ) LC_GeldKarte_Values_GetMaxLoad( values ) / 100.0;
-    moneyCardMoneyData[ "maxTransfer" ] = ( float ) LC_GeldKarte_Values_GetMaxXfer( values ) / 100.0;
-
-    /* TODO Read the stored values off the card loading/unloading of the card at credit institutes and read transactions in shops etc */
-    /* TODO contain transactions in shops */
-    transBlog = LC_GeldKarte_BLog_new();
-    transBlogList = LC_GeldKarte_BLog_List2_new();
-
-    //res = LC_GeldKarte_ReadBLogs( card, transBlogList );
-    if ( res != LC_Client_ResultOk ) {
-        QMessageBox::critical( 0, "QCardReader", "Can't get the transaction values from card." );
-        qlwItem = new QListWidgetItem( qlw );
-        qlwItem->setText( "ERROR:  " + errorMsg( card, res, qlw ) );
-        deinit( card, cl, res );
-        return moneyCardMoneyData;
-    }
-
-    moneyCardMoneyData[ "transactions" ] = LC_GeldKarte_BLog_GetLoaded( transBlog );
-
+    moneyCardMoneyData[ "loaded" ] = ( double )LC_GeldKarte_Values_GetLoaded( values ) / 100.0;
+    moneyCardMoneyData[ "maxLoaded" ] = ( double )LC_GeldKarte_Values_GetMaxLoad( values ) / 100.0;
+    moneyCardMoneyData[ "maxTransfer" ] = ( double )LC_GeldKarte_Values_GetMaxXfer( values ) / 100.0;
 
     qlwItem = new QListWidgetItem( qlw );
     qlwItem->setText( "INFO:  Get card data ... done" );
 
     qlwItem = new QListWidgetItem( qlw );
     qlwItem->setText( "INFO:  Close card and free memory ..." );
+    
+    LC_GeldKarte_Values_free(values);
+    
     deinit( card, cl, res );
     return moneyCardMoneyData;
+}
+
+/* TODO Get transactions from money card */
+QStringList QCRChipCard::getMoneyCardTransactionData( QListWidget *qlw )
+{
+    qlw->clear();
+
+    LC_CLIENT * cl;
+    LC_CARD *card = 0;
+    LC_CLIENT_RESULT res;
+    int rv;
+
+    cl = LC_Client_new( "QCardReader", "0.0.1", 0 );
+    if ( LC_Client_ReadConfigFile( cl, 0 ) ) {
+        QMessageBox::critical( 0, "QCardReader", "Can't read the configuration." );
+        deinit( card, cl, res );
+        return moneyCardTransactionData;
+    }
+
+    res = LC_Client_StartWait( cl, 0, 0 );
+    if ( res != LC_Client_ResultOk ) {
+        errorMsg( card, res, qlw );
+        deinit( card, cl, res );
+        return moneyCardTransactionData;
+    }
+
+    card = LC_Client_WaitForNextCard( cl, 30 );
+    if ( !card ) {
+        QMessageBox::critical( 0, "QCardReader", "No card found." );
+        errorMsg( card, res, qlw );
+        LC_Client_StopWait( cl );
+        deinit( card, cl, res );
+        return moneyCardTransactionData;
+    }
+
+    qlwItem = new QListWidgetItem( qlw );
+    qlwItem->setText( "INFO: Telling the server that we need no more cards ..." );
+
+    res = LC_Client_StopWait( cl );
+    if ( res != LC_Client_ResultOk ) {
+        qlwItem = new QListWidgetItem( qlw );
+        qlwItem->setText( "ERROR:  " + errorMsg( card, res, qlw ) );
+        deinit( card, cl, res );
+        return moneyCardTransactionData;
+    }
+
+    rv = LC_GeldKarte_ExtendCard( card );
+    if ( rv ) {
+        QMessageBox::warning( 0, "QCardReader", "Could not extend card as Money card, abort" );
+        deinit( card, cl, res );
+        return moneyCardTransactionData;
+    }
+
+    qlwItem = new QListWidgetItem( qlw );
+    qlwItem->setText( "INFO:  Opening card ..." );
+
+    /* TODO Open Card */
+    res = LC_Card_Open( card );
+    if ( res != LC_Client_ResultOk ) {
+        QMessageBox::critical( 0, "QCardReader", "Error executing command CardOpen." );
+        qlwItem = new QListWidgetItem( qlw );
+        qlwItem->setText( "ERROR:  " + errorMsg( card, res, qlw ) );
+        deinit( card, cl, res );
+        return moneyCardTransactionData;
+    }
+
+    /* TODO Read transactions in shops etc */
+    LC_GELDKARTE_BLOG *transBlog;
+    LC_GELDKARTE_BLOG_LIST2 *transBlogList;
+    LC_GELDKARTE_BLOG_LIST2_ITERATOR *transBlogList_it;
+    
+    LC_GELDKARTE_LLOG_LIST2 *transLLogList;
+    LC_GELDKARTE_LLOG_LIST2_ITERATOR *transLLogList_it;    
+
+    transBlogList = LC_GeldKarte_BLog_List2_new();
+    res = LC_GeldKarte_ReadBLogs( card, transBlogList );
+    
+    if ( res != LC_Client_ResultOk ) {
+        QMessageBox::critical( 0, "QCardReader", "Can't get the transaction values from card." );
+        qlwItem = new QListWidgetItem( qlw );
+        qlwItem->setText( "ERROR:  " + errorMsg( card, res, qlw ) );
+        deinit( card, cl, res );
+        return moneyCardTransactionData;
+    }
+    
+    qlwItem = new QListWidgetItem( qlw );
+    qlwItem->setText( "INFO:  Get card data ... done" );
+
+    qlwItem = new QListWidgetItem( qlw );
+    qlwItem->setText( "INFO:  Close card and free memory ..." );
+    deinit( card, cl, res );
+    return moneyCardTransactionData;    
 }
 
 /* TODO Get money  from processor card */

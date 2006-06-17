@@ -40,7 +40,8 @@ class QCRChipCard
         QMap<QString, QString> getKVKCardData( QListWidget *qlw );
         QStringList getMoneyCardData( QListWidget *qlw );
         QStringList getMoneyCardAccData( QListWidget *qlw );
-        QMap<QString, float> getMoneyCardMoneyData( QListWidget *qlw );
+        QStringList getMoneyCardTransactionData( QListWidget *qlw );
+        QMap<QString, double> getMoneyCardMoneyData( QListWidget *qlw );
 
     private:
         bool init( LC_CLIENT * cl );
@@ -48,7 +49,7 @@ class QCRChipCard
         QString errorMsg( LC_CARD *card, LC_CLIENT_RESULT res, QListWidget *qlw );
 
         QListWidgetItem *qlwItem;
-        QStringList moneyCardData, moneyCardAccData;
+        QStringList moneyCardData, moneyCardAccData, moneyCardTransactionData;
         QMap<QString, QString> kvkCardData;
-        QMap<QString, float> moneyCardMoneyData;
+        QMap<QString, double> moneyCardMoneyData;
 };
