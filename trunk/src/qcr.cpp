@@ -113,7 +113,6 @@ void QCardReader::slotMoneyCard()
         if ( tmpList.value( 0 ) == "accountId" )
             lineEditMoneyCardAccountId->setText( tmpList.value( 1 ) );
     }
-
 }
 
 void QCardReader::slotMoneyCardLoad()

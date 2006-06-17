@@ -1,1 +1,12 @@
-EMPTY
+I NEVER ACCEPT DESTROYED DATA ON YOUR PC AND HARDWARE.
+I DISTANCE ME FOR EVERY DESTROYED DATA ON YOUR PC AND HARDWARE.
+IF YOU USE THIS TOOL, LET ME SAY YOU USE THIS ON ONE RISK.
+
+You need the SVN version of libchipcard2, in the offical
+release is a small bug. I can't use the libchipcard library
+wit my tool.
+
+Q: Why?
+A: The libchipcard library have a unresolved symbols in the function
+     of kvk card (LC_KVKCard_ExtendCard and LC_KVKCard_GetCardData).
+     This is fixed in the SCN version of libchipcard.

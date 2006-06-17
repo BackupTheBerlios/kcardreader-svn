@@ -27,10 +27,10 @@ QT += xml
 
 TARGET = qcardreader
 #QMAKE_POST_LINK = strip -s bin/qcardreader
-RCC_DIR = .rcc
-MOC_DIR += .moc
-OBJECTS_DIR += .obj
-UI_DIR += .ui
+RCC_DIR = .unix/rcc
+MOC_DIR += .unix/moc
+OBJECTS_DIR += .unix/obj
+UI_DIR += .unix/ui
 LIBS += -L/usr/lib -lchipcard2c
 LIBS += -L/usr/lib -lgwenhywfar
 
