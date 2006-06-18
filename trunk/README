@@ -9,4 +9,9 @@ wit my tool.
 Q: Why?
 A: The libchipcard library have a unresolved symbols in the function
      of kvk card (LC_KVKCard_ExtendCard and LC_KVKCard_GetCardData).
-     This is fixed in the SCN version of libchipcard.
+     This is fixed in the SVN version of libchipcard.
+
+Q: Why can not read the load/unloaded money in Money (Max, Min, Transfer) tab?
+A: The libchipcard library have a bug with LC_GeldKarte_ReadBLogs(..., ...).
+     If this fixed from developer of libchipcard, than i enabled this.
+     PLEASE DO NOT ENABLED THIS IN SOURCE.
