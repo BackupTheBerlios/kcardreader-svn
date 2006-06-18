@@ -1,7 +1,14 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <!DOCTYPE KDevPrjSession>
 <KDevPrjSession>
- <DocsAndViews NumberOfDocuments="0" />
+ <DocsAndViews NumberOfDocuments="2" >
+  <Doc0 NumberOfViews="1" URL="file:///home/alex/project/qcardreader/src/qcr.cpp" >
+   <View0 line="102" Type="Source" />
+  </Doc0>
+  <Doc1 NumberOfViews="1" URL="file:///home/alex/project/qcardreader/include/qcr.h" >
+   <View0 line="27" Type="Source" />
+  </Doc1>
+ </DocsAndViews>
  <pluginList>
   <kdevdebugger>
    <breakpointList/>

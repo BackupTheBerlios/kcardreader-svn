@@ -32,7 +32,16 @@ QCardReader::QCardReader( QWidget *parent, Qt::WFlags flags ) : QWidget( parent,
 {
     setupUi( this );
 
+    /* Connection for general use */
+    connect( btnQuit, SIGNAL( clicked() ), this, SLOT( slotQuit() ) );
+    connect( btnClearLog, SIGNAL( clicked() ), this, SLOT( slotClearLog() ) );
+    connect( btnSaveLog, SIGNAL( clicked() ), this, SLOT( slotSaveLog() ) );
+    connect( btnAbout, SIGNAL( clicked() ), this, SLOT( slotAbout() ) );
+    
+    /* Connection for German Health Insurance Cards (KVK) */
     connect( btnKVKCardInfo, SIGNAL( clicked() ), this, SLOT( slotKVKCard() ) );
+
+    /* Connection for money cards */
     connect( btnMoneyCardInfo, SIGNAL( clicked() ), this, SLOT( slotMoneyCard() ) );
     connect( btnMoneyCardLoad, SIGNAL( clicked() ), this, SLOT( slotMoneyCardLoad() ) );
 
@@ -72,6 +81,35 @@ QCardReader::~QCardReader()
 void QCardReader::closeEvent( QCloseEvent *e )
 {
     e->accept();
+}
+
+void QCardReader::slotQuit()
+{
+    qApp->quit();
+}
+
+void QCardReader::slotClearLog()
+{}
+
+void QCardReader::slotSaveLog()
+{}
+
+void QCardReader::slotAbout()
+{
+    QCRChipCard *qcrc = new QCRChipCard();
+    
+    QString about, split;
+    split = qcrc->getLibchipcardVersion();
+
+    about = tr( "<h2>About QCardReader Version : 0.0.1</h2>" );
+    about += tr( "QCardReader is grafical tool for money cards, hbci cards, memory cards and many other cards if is supported by libchipcard2.<br /><br />" );
+    about += tr( "(c) 2006 Alexander Saal <a href=\"mailto:alex.saal@gmx.de\">alex.saal@gmx.de</a><br /><br />" );
+    about += tr( "<b>LibChipCard2 Version:</b> " )  + split + "<br /><br />";
+    about += tr( "<b>This Program is released under the terms of the<br/>GNU GENERAL PUBLIC LICENSE Version 2, June 1991</b><br /><br />" );
+    about += tr( "Special thanks to :<br />" );
+    about += tr( "  Martin Preuss for libchipcard2 <a href=\"mailto:martin@libchipcard.de\">martin@libchipcard.de</a><br />" );
+
+    QMessageBox::about( this, tr( "About QCardReader" ), about );
 }
 
 /* TODO Memory Card */

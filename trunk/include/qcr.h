@@ -31,7 +31,14 @@ class QCardReader : public QWidget, public Ui::UiQCardReader
         QCardReader( QWidget *parent = 0, Qt::WFlags flags = 0 );
         ~QCardReader();
 
-    private slots:       
+    private slots:
+
+        /* General slots */
+        void slotQuit();
+        void slotClearLog();
+        void slotSaveLog();
+        void slotAbout();
+
         /* Memory Card */
         void slotAddMemory();
         void slotRemoveMemory();
