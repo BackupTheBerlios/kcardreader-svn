@@ -16,7 +16,7 @@ Installation for Linux user:
 - open a shell console (like: konsole)
 - go into folder, where is your exctraced tar archive
 - enter the follow comand: qmake && make
-- if compile complet without error, no errors might emerge :-) go to sub folder bin and enter the following command: ./qrc
+- if compile complet without error, no errors might emerge :-) go to sub folder bin and enter the following command: ./qcardreader
 - it is not make install requirement
 
 Installation for Windows user:
@@ -31,7 +31,7 @@ Installation for Windows user:
 - enter the follow comand:
         qmake
         nmake or mingw32-make
-- if compile complet without error, no errors might emerge :-) go to sub folder bin and enter the following command: ./qrc
+- if compile complet without error, no errors might emerge :-) go to sub folder bin and enter the following command: ./qcardreader
 - or you use the precompiled binary (it is the easiest way)
 
 that is it, have fun ;-)

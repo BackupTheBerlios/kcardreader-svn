@@ -31,11 +31,40 @@ class QCardReader : public QWidget, public Ui::UiQCardReader
         QCardReader( QWidget *parent = 0, Qt::WFlags flags = 0 );
         ~QCardReader();
 
-    private slots:
+    private slots:       
+        /* Memory Card */
+        void slotAddMemory();
+        void slotRemoveMemory();
+        void slotChangeMemory();
+        void slotWriteMemory();
+        void slotReadMemory();
+        void slotCapacityMemory();
+
+        /* Processor Card */
+        void slotAddProcessorPwd();
+        void slotRemoveProcessorPwd();
+        void slotChangeProcessorPwd();
+        void slotWriteProcessorPwd();
+        void slotReadProcessorPwd();
+        void slotCapacityProcessorPwd();
+
+        /* TreeWidget Item Changed/Clicked */
+        void treeWidgetItemClicked( QTreeWidgetItem *, int );
+
+        /* ComboBox Item Changed/Clicked */
+        void comboboxItemClicked( int );
+	    
+        /* Money Card */
         void slotMoneyCard();
         void slotMoneyCardLoad();
+
+        /* KVK Card */
         void slotKVKCard();
-    
+
+    private:
+        /* ComboBox Index */
+        int cbxIndex;
+
     protected:
         void closeEvent( QCloseEvent *e );
 };

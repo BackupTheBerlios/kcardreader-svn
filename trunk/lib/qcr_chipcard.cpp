@@ -178,10 +178,104 @@ QMap<QString, QString> QCRChipCard::getKVKCardData( QListWidget *qlw )
     return kvkCardData;
 }
 
-/* TODO Get data from memory card */
-QString QCRChipCard::getMemoryCardData( QListWidget *qlw )
+/* TODO Write data to memory card */
+bool QCRChipCard::writeMemoryCardData( const QString &data, QListWidget *qlw )
 {
-    return "";
+    return true;
+}
+
+/* TODO Read data from memory card */
+QStringList QCRChipCard::readMemoryCardData( QTreeWidget *qtw, QListWidget *qlw )
+{
+    return QStringList();
+}
+
+/* TODO Get capacity data from memory card */
+unsigned int QCRChipCard::getCapacityMemoryCardData( QListWidget *qlw )
+{
+    qlw->clear();
+    memCap = 0;
+
+    LC_CLIENT * cl;
+    LC_CARD *card = 0;
+    LC_CLIENT_RESULT res;
+    
+    int rv;
+
+    cl = LC_Client_new( "QCardReader", "0.0.1", 0 );
+    if ( LC_Client_ReadConfigFile( cl, 0 ) ) {
+        QMessageBox::critical( 0, "QCardReader", "Can't read the configuration." );
+        deinit( card, cl, res );
+        return memCap;
+    }
+
+    res = LC_Client_StartWait( cl, 0, 0 );
+    if ( res != LC_Client_ResultOk ) {
+        errorMsg( card, res, qlw );
+        deinit( card, cl, res );
+        return memCap;
+    }
+
+    QMessageBox::information( 0, "QCardReader", "Please insert a Memory card." );
+    card = LC_Client_WaitForNextCard( cl, 30 );
+    if ( !card ) {
+        QMessageBox::critical( 0, "QCardReader", "No card found." );
+        errorMsg( card, res, qlw );
+        deinit( card, cl, res );
+        return memCap;
+    }
+
+    qlwItem = new QListWidgetItem( qlw );
+    qlwItem->setText( "INFO: Telling the server that we need no more cards ..." );
+
+    res = LC_Client_StopWait( cl );
+    if ( res != LC_Client_ResultOk ) {
+        qlwItem = new QListWidgetItem( qlw );
+        qlwItem->setText( "ERROR:  " + errorMsg( card, res, qlw ) );
+        deinit( card, cl, res );
+        return memCap;
+    }
+
+    rv = LC_MemoryCard_ExtendCard( card );
+    if ( rv ) {
+        QMessageBox::warning( 0, "QCardReader", "Could not extend card as Memory card, abort" );
+        deinit( card, cl, res );
+        return memCap;
+    }
+    
+
+    qlwItem = new QListWidgetItem( qlw );
+    qlwItem->setText( "INFO:  Opening card ..." );
+
+    res = LC_Card_Open( card );
+    if ( res != LC_Client_ResultOk ) {
+        QMessageBox::critical( 0, "QCardReader", "Error executing command CardOpen." );
+        qlwItem = new QListWidgetItem( qlw );
+        qlwItem->setText( "ERROR:  " + errorMsg( card, res, qlw ) );
+        deinit( card, cl, res );
+        return memCap;
+    }
+    
+    qlwItem = new QListWidgetItem( qlw );
+    qlwItem->setText( "INFO:  Get card data ..." );
+
+    memCap = LC_MemoryCard_GetCapacity( card );
+    
+    QVariant cap;
+    cap = memCap;
+    
+    qlwItem = new QListWidgetItem( qlw );
+    qlwItem->setText( "INFO:  Capacity of card: " + cap.toString() + " byte" );
+    
+    if( deinit( card, cl, res ) ) {
+	qlwItem = new QListWidgetItem( qlw );
+	qlwItem->setText( "INFO:  Close card and free memory ..." );
+    } else {
+	qlwItem = new QListWidgetItem( qlw );
+	qlwItem->setText( "WARRNING:  Close card and free memory ... faild" );
+    }
+
+    return memCap;
 }
 
 /* TODO Get version of LibChipCard2 */
@@ -299,9 +393,6 @@ QStringList QCRChipCard::getMoneyCardData( QListWidget *qlw )
 
     f.close();
     f.remove();
-
-    qlwItem = new QListWidgetItem( qlw );
-    qlwItem->setText( "INFO:  Get card data ... done" );
 
     qlwItem = new QListWidgetItem( qlw );
     qlwItem->setText( "INFO:  Close card and free memory ..." );

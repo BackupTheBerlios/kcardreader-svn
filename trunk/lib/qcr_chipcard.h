@@ -33,11 +33,18 @@ class QCRChipCard
         ~QCRChipCard();
 
         QString getDDVCardData( QListWidget *qlw );
-        QString getMemoryCardData( QListWidget *qlw );
         QString getProcessorCardData( QListWidget *qlw );
         QString getLibchipcardVersion();
 
+        /* TODO Funtion Memorycard */
+        bool writeMemoryCardData( const QString &data, QListWidget *qlw );
+        QStringList readMemoryCardData( QTreeWidget *qtw, QListWidget *qlw );
+        unsigned int getCapacityMemoryCardData( QListWidget *qlw );
+
+        /* TODO Funtion German Health Insurance Cards (KVK) */
         QMap<QString, QString> getKVKCardData( QListWidget *qlw );
+
+        /* TODO Funtion Moneycard */
         QStringList getMoneyCardData( QListWidget *qlw );
         QStringList getMoneyCardAccData( QListWidget *qlw );
         QStringList getMoneyCardTransactionData( QListWidget *qlw );
@@ -47,7 +54,8 @@ class QCRChipCard
         bool init( LC_CLIENT * cl );
         bool deinit( LC_CARD *card, LC_CLIENT * cl, LC_CLIENT_RESULT res );
         QString errorMsg( LC_CARD *card, LC_CLIENT_RESULT res, QListWidget *qlw );
-
+	
+        unsigned int memCap;
         QListWidgetItem *qlwItem;
         QStringList moneyCardData, moneyCardAccData, moneyCardTransactionData;
         QMap<QString, QString> kvkCardData;

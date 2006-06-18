@@ -36,6 +36,29 @@ QCardReader::QCardReader( QWidget *parent, Qt::WFlags flags ) : QWidget( parent,
     connect( btnMoneyCardInfo, SIGNAL( clicked() ), this, SLOT( slotMoneyCard() ) );
     connect( btnMoneyCardLoad, SIGNAL( clicked() ), this, SLOT( slotMoneyCardLoad() ) );
 
+    /* Connection for memory cards (password) */
+    connect( btnMemoryCardAddPwd, SIGNAL( clicked() ), this, SLOT( slotAddMemory() ) );
+    connect( btnMemoryCardRemovePwd, SIGNAL( clicked() ), this, SLOT( slotRemoveMemory() ) );
+    connect( btnMemoryCardChangePwd, SIGNAL( clicked() ), this, SLOT( slotChangeMemory() ) );
+    connect( btnMemoryCardWritePwd, SIGNAL( clicked() ), this, SLOT( slotWriteMemory() ) );
+    connect( btnMemoryCardReadPwd, SIGNAL( clicked() ), this, SLOT( slotReadMemory() ) );
+    connect( btnMemoryCardCapacityPwd, SIGNAL( clicked() ), this, SLOT( slotCapacityMemory() ) );
+
+    /* Connection for memory cards (e-mail) */
+    connect( btnMemoryCardAddEMail, SIGNAL( clicked() ), this, SLOT( slotAddMemory() ) );
+    connect( btnMemoryCardRemoveEMail, SIGNAL( clicked() ), this, SLOT( slotRemoveMemory() ) );
+    connect( btnMemoryCardChangeEMail, SIGNAL( clicked() ), this, SLOT( slotChangeMemory() ) );
+    connect( btnMemoryCardWriteEMail, SIGNAL( clicked() ), this, SLOT( slotWriteMemory() ) );
+    connect( btnMemoryCardReadEMail, SIGNAL( clicked() ), this, SLOT( slotReadMemory() ) );
+    connect( btnMemoryCardCapacityEMail, SIGNAL( clicked() ), this, SLOT( slotCapacityMemory() ) );
+
+    /* TreeWidget Item Clicked */
+    connect( treeWidgetPassword, SIGNAL( itemClicked( QTreeWidgetItem *, int ) ), this, SLOT( treeWidgetItemClicked( QTreeWidgetItem *, int ) ) );
+    connect( treeWidgetEMail, SIGNAL( itemClicked( QTreeWidgetItem *, int ) ), this, SLOT( treeWidgetItemClicked( QTreeWidgetItem *, int ) ) );
+
+    /* ComboBox Item Changed/Clicked */
+    connect( comboBoxUseCardAs, SIGNAL( currentIndexChanged( int ) ), this, SLOT( comboboxItemClicked( int ) ) );
+    
     QDesktopWidget *desktop = qApp->desktop();
     const QRect rect = desktop->availableGeometry( desktop->primaryScreen() );
     int left = ( rect.width() - width() ) / 2;
@@ -51,6 +74,49 @@ void QCardReader::closeEvent( QCloseEvent *e )
     e->accept();
 }
 
+/* TODO Memory Card */
+void QCardReader::slotAddMemory()
+{}
+
+void QCardReader::slotRemoveMemory()
+{}
+
+void QCardReader::slotChangeMemory()
+{}
+
+void QCardReader::slotWriteMemory()
+{}
+
+void QCardReader::slotReadMemory()
+{}
+
+void QCardReader::slotCapacityMemory()
+{
+    QCRChipCard *qcrc = new QCRChipCard();
+    qcrc->getCapacityMemoryCardData( listWidgetLogMessage );
+    delete qcrc;
+}
+
+/* TODO Processor Card */
+void QCardReader::slotAddProcessorPwd()
+{}
+
+void QCardReader::slotRemoveProcessorPwd()
+{}
+
+void QCardReader::slotChangeProcessorPwd()
+{}
+
+void QCardReader::slotWriteProcessorPwd()
+{}
+
+void QCardReader::slotReadProcessorPwd()
+{}
+
+void QCardReader::slotCapacityProcessorPwd()
+{}
+
+/* TODO Money Card Data*/
 void QCardReader::slotMoneyCard()
 {
     QStringList moneyMap, moneyMapAcc, tmpList;
@@ -115,6 +181,7 @@ void QCardReader::slotMoneyCard()
     }
 }
 
+/* TODO Money Card Load */
 void QCardReader::slotMoneyCardLoad()
 {
     QMap<QString, double> moneyLoadMap;
@@ -148,6 +215,7 @@ void QCardReader::slotMoneyCardLoad()
     //moneyTransList = qcrc->getMoneyCardTransactionData( listWidgetLogMessage );
 }
 
+/* TODO KVK Card */
 void QCardReader::slotKVKCard()
 {
     QMap<QString, QString> kvkMap;
@@ -203,4 +271,14 @@ void QCardReader::slotKVKCard()
             lineEditGHICEastOrWest->setText( c_it.value() );
         ++c_it;
     }
+}
+
+/* TreeWidget Item Clicked */
+void QCardReader::treeWidgetItemClicked( QTreeWidgetItem *item, int column )
+{}
+
+/* ComboBox Item Changed/Clicked */
+void QCardReader::comboboxItemClicked( int index )
+{
+    cbxIndex = index;
 }
