@@ -27,28 +27,27 @@
 #include <QtGui>
 #include <QtCore>
 
-QCardReaderLogin::QCardReaderLogin( QWidget *parent, Qt::WFlags flags ) : QWidget( parent, flags )
+QCardReaderLogin::QCardReaderLogin ( QWidget *parent, Qt::WFlags flags ) : QWidget ( parent, flags )
 {
-        setupUi( this );
+	setupUi ( this );
 
-        connect( btnApply, SIGNAL( clicked() ), this, SLOT( slotApply() ) );
+	connect ( btnApply, SIGNAL ( clicked() ), this, SLOT ( slotApply() ) );
 
-        QDesktopWidget *desktop = qApp->desktop();
-        const QRect rect = desktop->availableGeometry( desktop->primaryScreen() );
-        int left = ( rect.width() - width() ) / 2;
-        int top = ( rect.height() - height() ) / 2;
-        setGeometry( left, top, width(), height() );
+	QDesktopWidget *desktop = qApp->desktop();
+	const QRect rect = desktop->availableGeometry ( desktop->primaryScreen() );
+	int left = ( rect.width() - width() ) / 2;
+	int top = ( rect.height() - height() ) / 2;
+	setGeometry ( left, top, width(), height() );
 }
 
 QCardReaderLogin::~QCardReaderLogin()
 {}
 
-void QCardReaderLogin::closeEvent( QCloseEvent *e )
+void QCardReaderLogin::closeEvent ( QCloseEvent *e )
 {
-    e->accept();
+	e->accept();
 }
 
 void QCardReaderLogin::slotApply()
 {
-    
 }

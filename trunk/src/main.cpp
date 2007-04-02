@@ -23,12 +23,13 @@
 #include <QtCore>
 #include <QtGui>
 
-int main( int argc, char **argv ) {
-    QApplication app( argc, argv );
-    
-    QCardReader *qcr = new QCardReader();
-    qcr->show();
-    
-    app.connect( &app, SIGNAL( lastWindowClosed() ), &app, SLOT( quit() ) );
-    return app.exec();    
+int main ( int argc, char **argv )
+{
+	QApplication app ( argc, argv );
+
+	QCardReader *qcr = new QCardReader();
+	qcr->show();
+
+	app.connect ( &app, SIGNAL ( lastWindowClosed() ), &app, SLOT ( quit() ) );
+	return app.exec();
 }

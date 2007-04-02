@@ -28,36 +28,37 @@
 
 class QCRChipCard
 {
-    public:
-        QCRChipCard();
-        ~QCRChipCard();
+	public:
+		QCRChipCard();
+		~QCRChipCard();
 
-        QString getDDVCardData( QListWidget *qlw );
-        QString getProcessorCardData( QListWidget *qlw );
-        QString getLibchipcardVersion();
+		QString getDDVCardData ( QListWidget *qlw );
+		QString getProcessorCardData ( QListWidget *qlw );
+		QString getLibchipcardVersion();
+		QString getGwenhywfarVersion();
 
-        /* TODO Funtion Memorycard */
-        bool writeMemoryCardData( const QString &data, QListWidget *qlw );
-        QStringList readMemoryCardData( QTreeWidget *qtw, QListWidget *qlw );
-        unsigned int getCapacityMemoryCardData( QListWidget *qlw );
+		/* TODO Funtion Memorycard */
+		bool writeMemoryCardData ( const QString &data, QListWidget *qlw );
+		QStringList readMemoryCardData ( QTreeWidget *qtw, QListWidget *qlw );
+		unsigned int getCapacityMemoryCardData ( QListWidget *qlw );
 
-        /* TODO Funtion German Health Insurance Cards (KVK) */
-        QMap<QString, QString> getKVKCardData( QListWidget *qlw );
+		/* TODO Funtion German Health Insurance Cards (KVK) */
+		QMap<QString, QString> getKVKCardData ( QListWidget *qlw );
 
-        /* TODO Funtion Moneycard */
-        QStringList getMoneyCardData( QListWidget *qlw );
-        QStringList getMoneyCardAccData( QListWidget *qlw );
-        QStringList getMoneyCardTransactionData( QListWidget *qlw );
-        QMap<QString, double> getMoneyCardMoneyData( QListWidget *qlw );
+		/* TODO Funtion Moneycard */
+		QStringList getMoneyCardData ( QListWidget *qlw );
+		QStringList getMoneyCardAccData ( QListWidget *qlw );
+		QStringList getMoneyCardTransactionData ( QListWidget *qlw );
+		QMap<QString, double> getMoneyCardMoneyData ( QListWidget *qlw );
 
-    private:
-        bool init( LC_CLIENT * cl );
-        bool deinit( LC_CARD *card, LC_CLIENT * cl, LC_CLIENT_RESULT res );
-        QString errorMsg( LC_CARD *card, LC_CLIENT_RESULT res, QListWidget *qlw );
-	
-        unsigned int memCap;
-        QListWidgetItem *qlwItem;
-        QStringList moneyCardData, moneyCardAccData, moneyCardTransactionData;
-        QMap<QString, QString> kvkCardData;
-        QMap<QString, double> moneyCardMoneyData;
+	private:
+		bool init ( LC_CLIENT * cl );
+		bool deinit ( LC_CARD *card, LC_CLIENT * cl, LC_CLIENT_RESULT res );
+		QString errorMsg ( LC_CARD *card, LC_CLIENT_RESULT res, QListWidget *qlw );
+
+		unsigned int memCap;
+		QListWidgetItem *qlwItem;
+		QStringList moneyCardData, moneyCardAccData, moneyCardTransactionData;
+		QMap<QString, QString> kvkCardData;
+		QMap<QString, double> moneyCardMoneyData;
 };

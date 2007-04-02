@@ -21,6 +21,7 @@
 
 /* ChipCard3 include */
 #include <gwenhywfar/db.h>
+#include <gwenhywfar/version.h>
 
 #include <chipcard3/version.h>
 #include <chipcard3/chipcard3.h>
@@ -82,7 +83,7 @@ QMap<QString, QString> QCRChipCard::getKVKCardData ( QListWidget *qlw )
 	int rv;
 
 	cl = LC_Client_new ( "QCardReader", "0.0.1" );
-	res = LC_Client_Init( cl );
+	res = LC_Client_Init ( cl );
 
 	if ( res != LC_Client_ResultOk )
 	{
@@ -90,8 +91,8 @@ QMap<QString, QString> QCRChipCard::getKVKCardData ( QListWidget *qlw )
 		deinit ( card, cl, res );
 		return kvkCardData;
 	}
-	
-	res = LC_Client_Start(cl);
+
+	res = LC_Client_Start ( cl );
 	if ( res != LC_Client_ResultOk )
 	{
 		errorMsg ( card, res, qlw );
@@ -100,12 +101,12 @@ QMap<QString, QString> QCRChipCard::getKVKCardData ( QListWidget *qlw )
 	}
 
 	QMessageBox::information ( 0, "QCardReader", "Please insert a German medical card." );
-	res = LC_Client_GetNextCard(cl, &card, 30);
+	res = LC_Client_GetNextCard ( cl, &card, 30 );
 	if ( res!=LC_Client_ResultOk )
 	{
 		QMessageBox::critical ( 0, "QCardReader", "No card found." );
 		errorMsg ( card, res, qlw );
-		LC_Client_Stop( cl );
+		LC_Client_Stop ( cl );
 		deinit ( card, cl, res );
 		return kvkCardData;
 	}
@@ -154,20 +155,20 @@ QMap<QString, QString> QCRChipCard::getKVKCardData ( QListWidget *qlw )
 	qlwItem = new QListWidgetItem ( qlw );
 	qlwItem->setText ( "INFO:  Get card data ..." );
 
-	kvkCardData[ "insuranceCompanyName" ] = QString( GWEN_DB_GetCharValue( dbData, "insuranceCompanyName", 0, "nothing") );
-	kvkCardData[ "insuranceCompanyCode" ] = QString( GWEN_DB_GetCharValue( dbData, "insuranceCompanyCode", 0, "nothing") );
-	kvkCardData[ "cardNumber" ] = QString( GWEN_DB_GetCharValue( dbData, "cardNumber", 0, "nothing") );
-	kvkCardData[ "insuranceNumber" ] = QString( GWEN_DB_GetCharValue( dbData, "insuranceNumber", 0, "nothing") );
-	kvkCardData[ "insuranceState" ] = QString( GWEN_DB_GetCharValue( dbData, "insuranceState", 0, "nothing") );
-	kvkCardData[ "eastOrWest" ] = QString( GWEN_DB_GetCharValue( dbData, "eastOrWest", 0, "nothing") );
-	kvkCardData[ "foreName" ] = QString( GWEN_DB_GetCharValue( dbData, "foreName", 0, "nothing") );
-	kvkCardData[ "name" ] = QString( GWEN_DB_GetCharValue( dbData, "name", 0, "nothing") );
-	kvkCardData[ "dateOfBirth" ] = QString( GWEN_DB_GetCharValue( dbData, "dateOfBirth", 0, "nothing") );
-	kvkCardData[ "addrStreet" ] = QString( GWEN_DB_GetCharValue( dbData, "addrStreet", 0, "nothing") );
-	kvkCardData[ "addrPostalCode" ] = QString( GWEN_DB_GetCharValue( dbData, "addrPostalCode", 0, "nothing") );
-	kvkCardData[ "addrCity" ] = QString( GWEN_DB_GetCharValue( dbData, "addrCity", 0, "nothing") );
-	kvkCardData[ "bestBefore" ] = QString( GWEN_DB_GetCharValue( dbData, "bestBefore", 0, "nothing") );
-	kvkCardData[ "checksum" ] = QString( GWEN_DB_GetCharValue( dbData, "checksum", 0, "nothing") );
+	kvkCardData[ "insuranceCompanyName" ] = QString ( GWEN_DB_GetCharValue ( dbData, "insuranceCompanyName", 0, "nothing" ) );
+	kvkCardData[ "insuranceCompanyCode" ] = QString ( GWEN_DB_GetCharValue ( dbData, "insuranceCompanyCode", 0, "nothing" ) );
+	kvkCardData[ "cardNumber" ] = QString ( GWEN_DB_GetCharValue ( dbData, "cardNumber", 0, "nothing" ) );
+	kvkCardData[ "insuranceNumber" ] = QString ( GWEN_DB_GetCharValue ( dbData, "insuranceNumber", 0, "nothing" ) );
+	kvkCardData[ "insuranceState" ] = QString ( GWEN_DB_GetCharValue ( dbData, "insuranceState", 0, "nothing" ) );
+	kvkCardData[ "eastOrWest" ] = QString ( GWEN_DB_GetCharValue ( dbData, "eastOrWest", 0, "nothing" ) );
+	kvkCardData[ "foreName" ] = QString ( GWEN_DB_GetCharValue ( dbData, "foreName", 0, "nothing" ) );
+	kvkCardData[ "name" ] = QString ( GWEN_DB_GetCharValue ( dbData, "name", 0, "nothing" ) );
+	kvkCardData[ "dateOfBirth" ] = QString ( GWEN_DB_GetCharValue ( dbData, "dateOfBirth", 0, "nothing" ) );
+	kvkCardData[ "addrStreet" ] = QString ( GWEN_DB_GetCharValue ( dbData, "addrStreet", 0, "nothing" ) );
+	kvkCardData[ "addrPostalCode" ] = QString ( GWEN_DB_GetCharValue ( dbData, "addrPostalCode", 0, "nothing" ) );
+	kvkCardData[ "addrCity" ] = QString ( GWEN_DB_GetCharValue ( dbData, "addrCity", 0, "nothing" ) );
+	kvkCardData[ "bestBefore" ] = QString ( GWEN_DB_GetCharValue ( dbData, "bestBefore", 0, "nothing" ) );
+	kvkCardData[ "checksum" ] = QString ( GWEN_DB_GetCharValue ( dbData, "checksum", 0, "nothing" ) );
 
 
 	qlwItem = new QListWidgetItem ( qlw );
@@ -204,6 +205,11 @@ unsigned int QCRChipCard::getCapacityMemoryCardData ( QListWidget *qlw )
 QString QCRChipCard::getLibchipcardVersion()
 {
 	return CHIPCARD_VERSION_FULL_STRING;
+}
+
+QString QCRChipCard::getGwenhywfarVersion()
+{
+	return GWENHYWFAR_VERSION_FULL_STRING;
 }
 
 /* TODO Get data from money card */
@@ -250,13 +256,13 @@ bool QCRChipCard::deinit ( LC_CARD *card, LC_CLIENT * cl, LC_CLIENT_RESULT res )
 	res = LC_Card_Close ( card );
 	if ( res == LC_Client_ResultOk )
 	{
-		LC_Client_ReleaseCard(cl, card);
+		LC_Client_ReleaseCard ( cl, card );
 		LC_Card_free ( card );
 		LC_Client_free ( cl );
 		return true;
 	}
 
-	LC_Client_ReleaseCard(cl, card);
+	LC_Client_ReleaseCard ( cl, card );
 	LC_Card_free ( card );
 	LC_Client_free ( cl );
 	return false;

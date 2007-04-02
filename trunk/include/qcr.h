@@ -25,53 +25,53 @@
 
 class QCardReader : public QWidget, public Ui::UiQCardReader
 {
-    Q_OBJECT
-    
-    public:
-        QCardReader( QWidget *parent = 0, Qt::WFlags flags = 0 );
-        ~QCardReader();
+		Q_OBJECT
 
-    private slots:
+	public:
+		QCardReader ( QWidget *parent = 0, Qt::WFlags flags = 0 );
+		~QCardReader();
 
-        /* General slots */
-        void slotQuit();
-        void slotClearLog();
-        void slotSaveLog();
-        void slotAbout();
+	private slots:
 
-        /* Memory Card */
-        void slotAddMemory();
-        void slotRemoveMemory();
-        void slotChangeMemory();
-        void slotWriteMemory();
-        void slotReadMemory();
-        void slotCapacityMemory();
+		/* General slots */
+		void slotQuit();
+		void slotClearLog();
+		void slotSaveLog();
+		void slotAbout();
 
-        /* Processor Card */
-        void slotAddProcessorPwd();
-        void slotRemoveProcessorPwd();
-        void slotChangeProcessorPwd();
-        void slotWriteProcessorPwd();
-        void slotReadProcessorPwd();
-        void slotCapacityProcessorPwd();
+		/* Memory Card */
+		void slotAddMemory();
+		void slotRemoveMemory();
+		void slotChangeMemory();
+		void slotWriteMemory();
+		void slotReadMemory();
+		void slotCapacityMemory();
 
-        /* TreeWidget Item Changed/Clicked */
-        void treeWidgetItemClicked( QTreeWidgetItem *, int );
+		/* Processor Card */
+		void slotAddProcessorPwd();
+		void slotRemoveProcessorPwd();
+		void slotChangeProcessorPwd();
+		void slotWriteProcessorPwd();
+		void slotReadProcessorPwd();
+		void slotCapacityProcessorPwd();
 
-        /* ComboBox Item Changed/Clicked */
-        void comboboxItemClicked( int );
-	    
-        /* Money Card */
-        void slotMoneyCard();
-        void slotMoneyCardLoad();
+		/* TreeWidget Item Changed/Clicked */
+		void treeWidgetItemClicked ( QTreeWidgetItem *, int );
 
-        /* KVK Card */
-        void slotKVKCard();
+		/* ComboBox Item Changed/Clicked */
+		void comboboxItemClicked ( int );
 
-    private:
-        /* ComboBox Index */
-        int cbxIndex;
+		/* Money Card */
+		void slotMoneyCard();
+		void slotMoneyCardLoad();
 
-    protected:
-        void closeEvent( QCloseEvent *e );
+		/* KVK Card */
+		void slotKVKCard();
+
+	private:
+		/* ComboBox Index */
+		int cbxIndex;
+
+	protected:
+		void closeEvent ( QCloseEvent *e );
 };

@@ -25,15 +25,15 @@
 
 class QCardReaderLogin : public QWidget, public Ui::UiQCardReaderLogin
 {
-    Q_OBJECT
-    
-    public:
-        QCardReaderLogin( QWidget *parent = 0, Qt::WFlags flags = 0 );
-        ~QCardReaderLogin();
+		Q_OBJECT
 
-    private slots:
-       void slotApply();
-    
-    protected:
-        void closeEvent( QCloseEvent *e );
+	public:
+		QCardReaderLogin ( QWidget *parent = 0, Qt::WFlags flags = 0 );
+		~QCardReaderLogin();
+
+	private slots:
+		void slotApply();
+
+	protected:
+		void closeEvent ( QCloseEvent *e );
 };
