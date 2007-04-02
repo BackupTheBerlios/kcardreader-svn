@@ -19,20 +19,19 @@
 # Qt 4 Settings
 TEMPLATE = app
 DESTDIR = bin
+TARGET = qcardreader
 DEPENDPATH += include src ui 3rdparty
 INCLUDEPATH += include lib 3rdparty
 RESOURCES += res/qcr.qrc
 CONFIG += debug thread warn_on qt
-QT += xml
+LIBS += -L/usr/lib -lchipcard3c
+LIBS += -L/usr/lib -lgwenhywfar
+QT += xml network
 
-TARGET = qcardreader
-#QMAKE_POST_LINK = strip -s bin/qcardreader
 RCC_DIR = .unix/rcc
 MOC_DIR += .unix/moc
 OBJECTS_DIR += .unix/obj
 UI_DIR += .unix/ui
-LIBS += -L/usr/lib -lchipcard2c
-LIBS += -L/usr/lib -lgwenhywfar
 
 # Project Ui files
 FORMS += ui/qcardreader.ui
@@ -66,4 +65,4 @@ HEADERS += 3rdparty/XMLPreferences.h
 # 3rdparty Source
 SOURCES += 3rdparty/Base64.cpp
 SOURCES += 3rdparty/XMLPreferences.cpp
-SOURCES += 3rdparty/XMLWriter.cpp 
+SOURCES += 3rdparty/XMLWriter.cpp

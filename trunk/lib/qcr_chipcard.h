@@ -16,11 +16,11 @@
 *   Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
-/* Chipcard2/Gwen include */
+/* Chipcard3/Gwen include */
 #include <gwenhywfar/db.h>
-#include <chipcard2/chipcard2.h>
-#include <chipcard2-client/client/client.h>
-#include <chipcard2-client/client/card.h>
+#include <chipcard3/chipcard3.h>
+#include <chipcard3/client/client.h>
+#include <chipcard3/client/card.h>
 
 /* Qt4 include files */
 #include <QtCore>
