@@ -37,10 +37,12 @@ class QCRChipCard
 		QString getLibchipcardVersion();
 		QString getGwenhywfarVersion();
 
+		/* TODO Format Cards */
+		bool formatMemoryCard( QListWidget *qlw );
+
 		/* TODO Funtion Memorycard */
-		bool writeMemoryCardData ( const QString &data, QListWidget *qlw );
-		QStringList readMemoryCardData ( QTreeWidget *qtw, QListWidget *qlw );
-		unsigned int getCapacityMemoryCardData ( QListWidget *qlw );
+		bool writeMemoryCardData ( QString data, QListWidget *qlw );
+		QStringList  readMemoryCardData ( QTreeWidget *qtw, QListWidget *qlw );		
 
 		/* TODO Funtion German Health Insurance Cards (KVK) */
 		QMap<QString, QString> getKVKCardData ( QListWidget *qlw );
@@ -57,8 +59,10 @@ class QCRChipCard
 		QString errorMsg ( LC_CARD *card, LC_CLIENT_RESULT res, QListWidget *qlw );
 
 		unsigned int memCap;
+
 		QListWidgetItem *qlwItem;
 		QStringList moneyCardData, moneyCardAccData, moneyCardTransactionData;
 		QMap<QString, QString> kvkCardData;
+		QStringList memCardData;
 		QMap<QString, double> moneyCardMoneyData;
 };

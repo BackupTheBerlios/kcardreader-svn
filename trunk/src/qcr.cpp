@@ -60,7 +60,6 @@ QCardReader::QCardReader ( QWidget *parent, Qt::WFlags flags ) : QWidget ( paren
 	connect ( btnMemoryCardWriteEMail, SIGNAL ( clicked() ), this, SLOT ( slotWriteMemory() ) );
 	connect ( btnMemoryCardReadEMail, SIGNAL ( clicked() ), this, SLOT ( slotReadMemory() ) );
 	connect ( btnMemoryCardCapacityEMail, SIGNAL ( clicked() ), this, SLOT ( slotCapacityMemory() ) );
-
 	/* TreeWidget Item Clicked */
 	connect ( treeWidgetPassword, SIGNAL ( itemClicked ( QTreeWidgetItem *, int ) ), this, SLOT ( treeWidgetItemClicked ( QTreeWidgetItem *, int ) ) );
 	connect ( treeWidgetEMail, SIGNAL ( itemClicked ( QTreeWidgetItem *, int ) ), this, SLOT ( treeWidgetItemClicked ( QTreeWidgetItem *, int ) ) );
@@ -128,13 +127,14 @@ void QCardReader::slotWriteMemory()
 {}
 
 void QCardReader::slotReadMemory()
-{}
+{
+	QCRChipCard *qcrc = new QCRChipCard();
+	qcrc->formatMemoryCard( listWidgetLogMessage );
+	qcrc->readMemoryCardData( treeWidgetEMail, listWidgetLogMessage );
+}
 
 void QCardReader::slotCapacityMemory()
 {
-	QCRChipCard *qcrc = new QCRChipCard();
-	qcrc->getCapacityMemoryCardData ( listWidgetLogMessage );
-	delete qcrc;
 }
 
 /* TODO Processor Card */

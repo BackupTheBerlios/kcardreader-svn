@@ -180,8 +180,108 @@ QMap<QString, QString> QCRChipCard::getKVKCardData ( QListWidget *qlw )
 	return kvkCardData;
 }
 
+bool QCRChipCard::formatMemoryCard( QListWidget *qlw )
+{
+	qlw->clear();
+
+	LC_CLIENT *cl;
+	LC_CARD *card = 0;
+	LC_CLIENT_RESULT res;
+	int rv;
+
+	cl = LC_Client_new ( "QCardReader", "0.0.1" );
+	res = LC_Client_Init ( cl );
+
+	if ( res != LC_Client_ResultOk )
+	{
+		errorMsg ( card, res, qlw );
+		deinit ( card, cl, res );
+		return false;
+	}
+
+	res = LC_Client_Start ( cl );
+	if ( res != LC_Client_ResultOk )
+	{
+		errorMsg ( card, res, qlw );
+		deinit ( card, cl, res );
+		return false;
+	}
+
+	res = LC_Client_GetNextCard ( cl, &card, 20 );
+	if ( res!=LC_Client_ResultOk )
+	{
+		QMessageBox::critical ( 0, "QCardReader", "No card found." );
+		errorMsg ( card, res, qlw );
+		LC_Client_Stop ( cl );
+		deinit ( card, cl, res );
+		return false;
+	}
+
+	qlwItem = new QListWidgetItem ( qlw );
+	qlwItem->setText ( "INFO: Telling the server that we need no more cards ..." );
+
+	rv = LC_MemoryCard_ExtendCard( card );
+	if ( rv )
+	{
+		QMessageBox::warning ( 0, "QCardReader", "Could not extend card as memory card, abort." );
+		deinit ( card, cl, res );
+		return false;
+	}
+
+	qlwItem = new QListWidgetItem ( qlw );
+	qlwItem->setText ( "INFO:  Opening card ..." );
+
+	res = LC_Card_Open( card );
+	if ( res!=LC_Client_ResultOk )
+	{
+		QMessageBox::critical ( 0, "QCardReader", "No card found." );
+		errorMsg ( card, res, qlw );
+		LC_Client_Stop ( cl );
+		deinit ( card, cl, res );
+		return false;
+	}
+
+	res = LC_Client_Stop ( cl );
+	if ( res != LC_Client_ResultOk )
+	{
+		qlwItem = new QListWidgetItem ( qlw );
+		qlwItem->setText ( "ERROR:  " + errorMsg ( card, res, qlw ) );
+		deinit ( card, cl, res );
+		return false;
+	}
+
+	memCap = LC_MemoryCard_GetCapacity( card );
+
+	const char *data;
+	data = "";
+
+	for( unsigned int x = 0; x < memCap; x++ ) {
+		res = LC_MemoryCard_WriteBinary( card, x, data, QByteArray( data ).length() );
+		if ( res != LC_Client_ResultOk )
+		{
+			QMessageBox::critical ( 0, "QCardReader", "No card data available." );
+			errorMsg ( card, res, qlw );
+			deinit ( card, cl, res );
+			return false;
+		}
+	}
+
+	rv = LC_MemoryCard_UnextendCard( card );
+	if ( rv )
+	{
+		QMessageBox::critical ( 0, "QCardReader", "Error executing command UnextendCard." );
+		qlwItem = new QListWidgetItem ( qlw );
+		qlwItem->setText ( "ERROR:  " + errorMsg ( card, res, qlw ) );
+		deinit ( card, cl, res );
+		return false;
+	}
+
+	deinit ( card, cl, res );
+	return true;
+}
+
 /* TODO Write data to memory card */
-bool QCRChipCard::writeMemoryCardData ( const QString &data, QListWidget *qlw )
+bool QCRChipCard::writeMemoryCardData ( QString data, QListWidget *qlw )
 {
 	return true;
 }
@@ -189,16 +289,126 @@ bool QCRChipCard::writeMemoryCardData ( const QString &data, QListWidget *qlw )
 /* TODO Read data from memory card */
 QStringList QCRChipCard::readMemoryCardData ( QTreeWidget *qtw, QListWidget *qlw )
 {
-	return QStringList();
-}
-
-/* TODO Get capacity data from memory card */
-unsigned int QCRChipCard::getCapacityMemoryCardData ( QListWidget *qlw )
-{
 	qlw->clear();
-	memCap = 0;
 
-	return memCap;
+	LC_CLIENT *cl;
+	LC_CARD *card = 0;
+	LC_CLIENT_RESULT res;
+	GWEN_BUFFER *memBuff;
+	int rv;
+
+	cl = LC_Client_new ( "QCardReader", "0.0.1" );
+	res = LC_Client_Init ( cl );
+
+	if ( res != LC_Client_ResultOk )
+	{
+		errorMsg ( card, res, qlw );
+		deinit ( card, cl, res );
+		return memCardData;
+	}
+
+	res = LC_Client_Start ( cl );
+	if ( res != LC_Client_ResultOk )
+	{
+		errorMsg ( card, res, qlw );
+		deinit ( card, cl, res );
+		return memCardData;
+	}
+
+	res = LC_Client_GetNextCard ( cl, &card, 20 );
+	if ( res!=LC_Client_ResultOk )
+	{
+		QMessageBox::critical ( 0, "QCardReader", "No card found." );
+		errorMsg ( card, res, qlw );
+		LC_Client_Stop ( cl );
+		deinit ( card, cl, res );
+		return memCardData;
+	}
+
+	qlwItem = new QListWidgetItem ( qlw );
+	qlwItem->setText ( "INFO: Telling the server that we need no more cards ..." );
+
+	rv = LC_MemoryCard_ExtendCard( card );
+	if ( rv )
+	{
+		QMessageBox::warning ( 0, "QCardReader", "Could not extend card as memory card, abort." );
+		deinit ( card, cl, res );
+		return memCardData;
+	}
+
+	qlwItem = new QListWidgetItem ( qlw );
+	qlwItem->setText ( "INFO:  Opening card ..." );
+
+	res = LC_Card_Open( card );
+	if ( res!=LC_Client_ResultOk )
+	{
+		QMessageBox::critical ( 0, "QCardReader", "No card found." );
+		errorMsg ( card, res, qlw );
+		LC_Client_Stop ( cl );
+		deinit ( card, cl, res );
+		return memCardData;
+	}
+
+	res = LC_Client_Stop ( cl );
+	if ( res != LC_Client_ResultOk )
+	{
+		qlwItem = new QListWidgetItem ( qlw );
+		qlwItem->setText ( "ERROR:  " + errorMsg ( card, res, qlw ) );
+		deinit ( card, cl, res );
+		return memCardData;
+	}
+
+	memCap = LC_MemoryCard_GetCapacity( card );
+	memBuff = GWEN_Buffer_new(0, memCap, 0, 1);
+
+	const char *data;
+	data = "Hallo du da im radio :)";
+	res = LC_MemoryCard_WriteBinary(card, 0, data, QByteArray( data ).length() );
+	if ( res != LC_Client_ResultOk )
+	{
+		QMessageBox::critical ( 0, "QCardReader", "No card data available." );
+		errorMsg ( card, res, qlw );
+		deinit ( card, cl, res );
+		GWEN_Buffer_free( memBuff );
+		return memCardData;
+	}
+
+	res = LC_MemoryCard_ReadBinary ( card, 0, memCap, memBuff );
+	if ( res != LC_Client_ResultOk )
+	{
+		QMessageBox::critical ( 0, "QCardReader", "No card data available." );
+		errorMsg ( card, res, qlw );
+		deinit ( card, cl, res );
+		GWEN_Buffer_free( memBuff );
+		return memCardData;
+	}
+
+	qlwItem = new QListWidgetItem ( qlw );
+	qlwItem->setText ( "INFO:  Get card data ..." );
+	
+	char *posPointer = GWEN_Buffer_GetPosPointer( memBuff );
+	char *start = GWEN_Buffer_GetStart( memBuff );
+	
+	qlwItem = new QListWidgetItem ( qlw );
+	qlwItem->setText ( "INFO:  Get card data ... done" );
+
+	qlwItem = new QListWidgetItem ( qlw );
+	qlwItem->setText ( "INFO:  Close card and free memory ..." );
+
+	rv = LC_MemoryCard_UnextendCard( card );
+	if ( rv )
+	{
+		QMessageBox::critical ( 0, "QCardReader", "Error executing command UnextendCard." );
+		qlwItem = new QListWidgetItem ( qlw );
+		qlwItem->setText ( "ERROR:  " + errorMsg ( card, res, qlw ) );
+		deinit ( card, cl, res );
+		GWEN_Buffer_free( memBuff );
+		return memCardData;
+	}
+
+	deinit ( card, cl, res );
+	GWEN_Buffer_free( memBuff );
+	return memCardData;
 }
 
 /* TODO Get version of LibChipCard2 */
