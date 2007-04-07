@@ -207,6 +207,7 @@ bool QCRChipCard::formatMemoryCard( QListWidget *qlw )
 		return false;
 	}
 
+	QMessageBox::critical ( 0, "QCardReader", "Please insert a card." );
 	res = LC_Client_GetNextCard ( cl, &card, 20 );
 	if ( res!=LC_Client_ResultOk )
 	{
@@ -253,18 +254,10 @@ bool QCRChipCard::formatMemoryCard( QListWidget *qlw )
 	memCap = LC_MemoryCard_GetCapacity( card );
 
 	const char *data;
-	data = "";
+	data = " ";
 
-	for( unsigned int x = 0; x < memCap; x++ ) {
+	for( unsigned int x = 0; x < memCap - 1; x++ )
 		res = LC_MemoryCard_WriteBinary( card, x, data, QByteArray( data ).length() );
-		if ( res != LC_Client_ResultOk )
-		{
-			QMessageBox::critical ( 0, "QCardReader", "No card data available." );
-			errorMsg ( card, res, qlw );
-			deinit ( card, cl, res );
-			return false;
-		}
-	}
 
 	rv = LC_MemoryCard_UnextendCard( card );
 	if ( rv )
@@ -344,7 +337,6 @@ QStringList QCRChipCard::readMemoryCardData ( QTreeWidget *qtw, QListWidget *qlw
 	{
 		QMessageBox::critical ( 0, "QCardReader", "No card found." );
 		errorMsg ( card, res, qlw );
-		LC_Client_Stop ( cl );
 		deinit ( card, cl, res );
 		return memCardData;
 	}
@@ -361,22 +353,10 @@ QStringList QCRChipCard::readMemoryCardData ( QTreeWidget *qtw, QListWidget *qlw
 	memCap = LC_MemoryCard_GetCapacity( card );
 	memBuff = GWEN_Buffer_new(0, memCap, 0, 1);
 
-	const char *data;
-	data = "Hallo du da im radio :)";
-	res = LC_MemoryCard_WriteBinary(card, 0, data, QByteArray( data ).length() );
-	if ( res != LC_Client_ResultOk )
-	{
-		QMessageBox::critical ( 0, "QCardReader", "No card data available." );
-		errorMsg ( card, res, qlw );
-		deinit ( card, cl, res );
-		GWEN_Buffer_free( memBuff );
-		return memCardData;
-	}
-
 	res = LC_MemoryCard_ReadBinary ( card, 0, memCap, memBuff );
 	if ( res != LC_Client_ResultOk )
 	{
-		QMessageBox::critical ( 0, "QCardReader", "No card data available." );
+		QMessageBox::critical ( 0, "QCardReader", "Can't read memory card." );
 		errorMsg ( card, res, qlw );
 		deinit ( card, cl, res );
 		GWEN_Buffer_free( memBuff );

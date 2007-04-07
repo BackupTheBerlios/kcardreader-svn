@@ -1,30 +1,17 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <!DOCTYPE KDevPrjSession>
 <KDevPrjSession>
- <DocsAndViews NumberOfDocuments="3" >
-  <Doc0 NumberOfViews="1" URL="file:///home/chmaster/projekte/kcardreader/src/qcr.cpp" >
-   <View0 Encoding="" line="132" Type="Source" />
+ <DocsAndViews NumberOfDocuments="2" >
+  <Doc0 NumberOfViews="1" URL="file:///home/chmaster/projekte/kcardreader/lib/qcr_chipcard.cpp" >
+   <View0 Encoding="" line="368" Type="Source" />
   </Doc0>
-  <Doc1 NumberOfViews="1" URL="file:///home/chmaster/projekte/kcardreader/lib/qcr_chipcard.h" >
-   <View0 Encoding="" line="40" Type="Source" />
+  <Doc1 NumberOfViews="1" URL="file:///home/chmaster/projekte/kcardreader/src/qcr.cpp" >
+   <View0 Encoding="" line="132" Type="Source" />
   </Doc1>
-  <Doc2 NumberOfViews="1" URL="file:///home/chmaster/projekte/kcardreader/lib/qcr_chipcard.cpp" >
-   <View0 Encoding="" line="411" Type="Source" />
-  </Doc2>
  </DocsAndViews>
  <pluginList>
   <kdevdebugger>
-   <breakpointList>
-    <breakpoint0 location="/home/chmaster/projekte/kcardreader/src/qcr.cpp:264" type="1" tracingFormatString="" traceFormatStringEnabled="0" condition="" tracingEnabled="0" enabled="1" >
-     <tracedExpressions/>
-    </breakpoint0>
-    <breakpoint1 location="/home/chmaster/projekte/kcardreader/lib/qcr_chipcard.cpp:361" type="1" tracingFormatString="" traceFormatStringEnabled="0" condition="" tracingEnabled="0" enabled="1" >
-     <tracedExpressions/>
-    </breakpoint1>
-    <breakpoint2 location="/home/chmaster/projekte/kcardreader/lib/qcr_chipcard.cpp:253" type="1" tracingFormatString="" traceFormatStringEnabled="0" condition="" tracingEnabled="0" enabled="1" >
-     <tracedExpressions/>
-    </breakpoint2>
-   </breakpointList>
+   <breakpointList/>
    <showInternalCommands value="0" />
   </kdevdebugger>
   <kdevastyle>

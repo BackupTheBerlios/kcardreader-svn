@@ -45,21 +45,13 @@ QCardReader::QCardReader ( QWidget *parent, Qt::WFlags flags ) : QWidget ( paren
 	connect ( btnMoneyCardInfo, SIGNAL ( clicked() ), this, SLOT ( slotMoneyCard() ) );
 	connect ( btnMoneyCardLoad, SIGNAL ( clicked() ), this, SLOT ( slotMoneyCardLoad() ) );
 
-	/* Connection for memory cards (password) */
-	connect ( btnMemoryCardAddPwd, SIGNAL ( clicked() ), this, SLOT ( slotAddMemory() ) );
-	connect ( btnMemoryCardRemovePwd, SIGNAL ( clicked() ), this, SLOT ( slotRemoveMemory() ) );
-	connect ( btnMemoryCardChangePwd, SIGNAL ( clicked() ), this, SLOT ( slotChangeMemory() ) );
-	connect ( btnMemoryCardWritePwd, SIGNAL ( clicked() ), this, SLOT ( slotWriteMemory() ) );
-	connect ( btnMemoryCardReadPwd, SIGNAL ( clicked() ), this, SLOT ( slotReadMemory() ) );
-	connect ( btnMemoryCardCapacityPwd, SIGNAL ( clicked() ), this, SLOT ( slotCapacityMemory() ) );
-
 	/* Connection for memory cards (e-mail) */
-	connect ( btnMemoryCardAddEMail, SIGNAL ( clicked() ), this, SLOT ( slotAddMemory() ) );
-	connect ( btnMemoryCardRemoveEMail, SIGNAL ( clicked() ), this, SLOT ( slotRemoveMemory() ) );
-	connect ( btnMemoryCardChangeEMail, SIGNAL ( clicked() ), this, SLOT ( slotChangeMemory() ) );
-	connect ( btnMemoryCardWriteEMail, SIGNAL ( clicked() ), this, SLOT ( slotWriteMemory() ) );
-	connect ( btnMemoryCardReadEMail, SIGNAL ( clicked() ), this, SLOT ( slotReadMemory() ) );
-	connect ( btnMemoryCardCapacityEMail, SIGNAL ( clicked() ), this, SLOT ( slotCapacityMemory() ) );
+	connect ( btnMemoryCardAdd, SIGNAL ( clicked() ), this, SLOT ( slotAddMemory() ) );
+	connect ( btnMemoryCardRemove, SIGNAL ( clicked() ), this, SLOT ( slotRemoveMemory() ) );
+	connect ( btnMemoryCardChange, SIGNAL ( clicked() ), this, SLOT ( slotChangeMemory() ) );
+	connect ( btnMemoryCardWrite, SIGNAL ( clicked() ), this, SLOT ( slotWriteMemory() ) );
+	connect ( btnMemoryCardRead, SIGNAL ( clicked() ), this, SLOT ( slotReadMemory() ) );
+	connect ( btnMemoryCardCapacity, SIGNAL ( clicked() ), this, SLOT ( slotCapacityMemory() ) );
 	/* TreeWidget Item Clicked */
 	connect ( treeWidgetPassword, SIGNAL ( itemClicked ( QTreeWidgetItem *, int ) ), this, SLOT ( treeWidgetItemClicked ( QTreeWidgetItem *, int ) ) );
 	connect ( treeWidgetEMail, SIGNAL ( itemClicked ( QTreeWidgetItem *, int ) ), this, SLOT ( treeWidgetItemClicked ( QTreeWidgetItem *, int ) ) );

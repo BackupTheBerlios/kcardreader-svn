@@ -1,2421 +1,2572 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>UiQCardReader</class>
  <widget class="QWidget" name="UiQCardReader" >
   <property name="geometry" >
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>860</width>
-    <height>547</height>
+    <width>853</width>
+    <height>558</height>
    </rect>
-  </property>
-  <property name="minimumSize" >
-   <size>
-    <width>860</width>
-    <height>547</height>
-   </size>
-  </property>
-  <property name="maximumSize" >
-   <size>
-    <width>860</width>
-    <height>547</height>
-   </size>
   </property>
   <property name="windowTitle" >
    <string>QCardReader</string>
   </property>
-  <widget class="QListWidget" name="listWidgetCard" >
-   <property name="geometry" >
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>111</width>
-     <height>491</height>
-    </rect>
-   </property>
-   <property name="iconSize" >
-    <size>
-     <width>96</width>
-     <height>60</height>
-    </size>
-   </property>
-   <property name="movement" >
-    <enum>QListView::Static</enum>
-   </property>
-   <property name="viewMode" >
-    <enum>QListView::IconMode</enum>
-   </property>
-   <property name="currentRow" >
-    <number>0</number>
-   </property>
-   <item>
-    <property name="text" >
-     <string>Moneycard</string>
-    </property>
-    <property name="icon" >
-     <iconset resource="../res/qcr.qrc" >:/images/euro.png</iconset>
-    </property>
-   </item>
-   <item>
-    <property name="text" >
-     <string>Memorycard</string>
-    </property>
-    <property name="icon" >
-     <iconset resource="../res/qcr.qrc" >:/images/memory.png</iconset>
-    </property>
-   </item>
-   <item>
-    <property name="text" >
-     <string>Processorcard</string>
-    </property>
-    <property name="icon" >
-     <iconset resource="../res/qcr.qrc" >:/images/processor.png</iconset>
-    </property>
-   </item>
-   <item>
-    <property name="text" >
-     <string>GHIC</string>
-    </property>
-    <property name="icon" >
-     <iconset resource="../res/qcr.qrc" >:/images/kvk.png</iconset>
-    </property>
-   </item>
-   <item>
-    <property name="text" >
-     <string>DDV Card</string>
-    </property>
-    <property name="icon" >
-     <iconset resource="../res/qcr.qrc" >:/images/empty.png</iconset>
-    </property>
-   </item>
-   <item>
-    <property name="text" >
-     <string>RSA Cards</string>
-    </property>
-    <property name="icon" >
-     <iconset resource="../res/qcr.qrc" >:/images/empty.png</iconset>
-    </property>
-   </item>
-  </widget>
-  <widget class="QStackedWidget" name="stackedWidgetCards" >
-   <property name="geometry" >
-    <rect>
-     <x>130</x>
-     <y>10</y>
-     <width>721</width>
-     <height>331</height>
-    </rect>
-   </property>
-   <property name="currentIndex" >
-    <number>0</number>
-   </property>
-   <widget class="QWidget" name="page" >
-    <widget class="QTabWidget" name="tabWidget_3" >
-     <property name="geometry" >
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>721</width>
-       <height>331</height>
-      </rect>
+  <layout class="QGridLayout" >
+   <item rowspan="3" row="0" column="0" >
+    <widget class="QListWidget" name="listWidgetCard" >
+     <property name="minimumSize" >
+      <size>
+       <width>101</width>
+       <height>391</height>
+      </size>
      </property>
-     <property name="currentIndex" >
+     <property name="maximumSize" >
+      <size>
+       <width>101</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="iconSize" >
+      <size>
+       <width>32</width>
+       <height>32</height>
+      </size>
+     </property>
+     <property name="movement" >
+      <enum>QListView::Static</enum>
+     </property>
+     <property name="resizeMode" >
+      <enum>QListView::Fixed</enum>
+     </property>
+     <property name="gridSize" >
+      <size>
+       <width>96</width>
+       <height>64</height>
+      </size>
+     </property>
+     <property name="viewMode" >
+      <enum>QListView::IconMode</enum>
+     </property>
+     <property name="currentRow" >
       <number>0</number>
      </property>
-     <widget class="QWidget" name="tabMoneyCard" >
-      <attribute name="title" >
-       <string>Money Cards (Geldkarte)</string>
-      </attribute>
-      <layout class="QGridLayout" >
-       <property name="margin" >
-        <number>9</number>
-       </property>
-       <property name="spacing" >
-        <number>6</number>
-       </property>
-       <item row="1" column="0" >
-        <spacer>
-         <property name="orientation" >
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" >
-          <size>
-           <width>20</width>
-           <height>16</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="0" column="0" >
-        <layout class="QGridLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item row="0" column="1" >
-          <layout class="QHBoxLayout" >
-           <property name="margin" >
-            <number>0</number>
-           </property>
-           <property name="spacing" >
-            <number>6</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="label_24" >
-             <property name="minimumSize" >
-              <size>
-               <width>110</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize" >
-              <size>
-               <width>110</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="text" >
-              <string>Short bankcode:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="lineEditMoneyCardShortBankcode" >
-             <property name="cursor" >
-              <cursor>0</cursor>
-             </property>
-             <property name="readOnly" >
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="0" column="0" >
-          <layout class="QHBoxLayout" >
-           <property name="margin" >
-            <number>0</number>
-           </property>
-           <property name="spacing" >
-            <number>6</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="label_14" >
-             <property name="minimumSize" >
-              <size>
-               <width>110</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize" >
-              <size>
-               <width>110</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="text" >
-              <string>Branchkey:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="lineEditMoneyCardBranchKey" >
-             <property name="cursor" >
-              <cursor>0</cursor>
-             </property>
-             <property name="readOnly" >
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="4" column="1" >
-          <layout class="QHBoxLayout" >
-           <property name="margin" >
-            <number>0</number>
-           </property>
-           <property name="spacing" >
-            <number>6</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="label_22" >
-             <property name="minimumSize" >
-              <size>
-               <width>110</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize" >
-              <size>
-               <width>110</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="text" >
-              <string>Currency:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="lineEditMoneyCardCurrency" >
-             <property name="cursor" >
-              <cursor>0</cursor>
-             </property>
-             <property name="readOnly" >
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="1" column="0" >
-          <layout class="QHBoxLayout" >
-           <property name="margin" >
-            <number>0</number>
-           </property>
-           <property name="spacing" >
-            <number>6</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="label_16" >
-             <property name="minimumSize" >
-              <size>
-               <width>110</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize" >
-              <size>
-               <width>110</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="text" >
-              <string>Card Nr.:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="lineEditMoneyCardCardNumber" >
-             <property name="cursor" >
-              <cursor>0</cursor>
-             </property>
-             <property name="readOnly" >
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="3" column="1" >
-          <layout class="QHBoxLayout" >
-           <property name="margin" >
-            <number>0</number>
-           </property>
-           <property name="spacing" >
-            <number>6</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="label_20" >
-             <property name="minimumSize" >
-              <size>
-               <width>110</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize" >
-              <size>
-               <width>110</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="text" >
-              <string>Valid until:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="lineEditMoneyCardValidUntil" >
-             <property name="cursor" >
-              <cursor>0</cursor>
-             </property>
-             <property name="readOnly" >
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="1" column="1" >
-          <layout class="QHBoxLayout" >
-           <property name="margin" >
-            <number>0</number>
-           </property>
-           <property name="spacing" >
-            <number>6</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="label_29" >
-             <property name="minimumSize" >
-              <size>
-               <width>110</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize" >
-              <size>
-               <width>110</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="text" >
-              <string>Card type:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="lineEditMoneyCardCardType" >
-             <property name="cursor" >
-              <cursor>0</cursor>
-             </property>
-             <property name="readOnly" >
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="5" column="0" >
-          <layout class="QHBoxLayout" >
-           <property name="margin" >
-            <number>0</number>
-           </property>
-           <property name="spacing" >
-            <number>6</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="label_17" >
-             <property name="minimumSize" >
-              <size>
-               <width>110</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize" >
-              <size>
-               <width>110</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="text" >
-              <string>Country:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="lineEditMoneyCardCountry" >
-             <property name="cursor" >
-              <cursor>0</cursor>
-             </property>
-             <property name="readOnly" >
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="2" column="0" >
-          <layout class="QHBoxLayout" >
-           <property name="margin" >
-            <number>0</number>
-           </property>
-           <property name="spacing" >
-            <number>6</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="label_19" >
-             <property name="minimumSize" >
-              <size>
-               <width>110</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize" >
-              <size>
-               <width>110</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="text" >
-              <string>Factor:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="lineEditMoneyCardFactor" >
-             <property name="cursor" >
-              <cursor>0</cursor>
-             </property>
-             <property name="readOnly" >
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="5" column="1" >
-          <layout class="QHBoxLayout" >
-           <property name="margin" >
-            <number>0</number>
-           </property>
-           <property name="spacing" >
-            <number>6</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="label_30" >
-             <property name="minimumSize" >
-              <size>
-               <width>110</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize" >
-              <size>
-               <width>110</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="text" >
-              <string>Bankcode:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="lineEditMoneyCardBankCode" >
-             <property name="cursor" >
-              <cursor>0</cursor>
-             </property>
-             <property name="readOnly" >
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="3" column="0" >
-          <layout class="QHBoxLayout" >
-           <property name="margin" >
-            <number>0</number>
-           </property>
-           <property name="spacing" >
-            <number>6</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="label_18" >
-             <property name="minimumSize" >
-              <size>
-               <width>110</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize" >
-              <size>
-               <width>110</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="text" >
-              <string>Valid since:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="lineEditMoneyCardValidSince" >
-             <property name="cursor" >
-              <cursor>0</cursor>
-             </property>
-             <property name="readOnly" >
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="2" column="1" >
-          <layout class="QHBoxLayout" >
-           <property name="margin" >
-            <number>0</number>
-           </property>
-           <property name="spacing" >
-            <number>6</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="label_21" >
-             <property name="minimumSize" >
-              <size>
-               <width>110</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize" >
-              <size>
-               <width>110</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="text" >
-              <string>Checksum:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="lineEditMoneyCardCheckSum" >
-             <property name="cursor" >
-              <cursor>0</cursor>
-             </property>
-             <property name="readOnly" >
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="6" column="0" colspan="2" >
-          <layout class="QHBoxLayout" >
-           <property name="margin" >
-            <number>0</number>
-           </property>
-           <property name="spacing" >
-            <number>6</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="label_28" >
-             <property name="minimumSize" >
-              <size>
-               <width>110</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize" >
-              <size>
-               <width>110</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="text" >
-              <string>Account Id:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="lineEditMoneyCardAccountId" >
-             <property name="cursor" >
-              <cursor>0</cursor>
-             </property>
-             <property name="readOnly" >
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="4" column="0" >
-          <layout class="QHBoxLayout" >
-           <property name="margin" >
-            <number>0</number>
-           </property>
-           <property name="spacing" >
-            <number>6</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="label_23" >
-             <property name="minimumSize" >
-              <size>
-               <width>110</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize" >
-              <size>
-               <width>110</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="text" >
-              <string>Chipversion:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="lineEditMoneyCardChipVersion" >
-             <property name="cursor" >
-              <cursor>0</cursor>
-             </property>
-             <property name="readOnly" >
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </item>
-       <item row="2" column="0" >
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <widget class="QPushButton" name="btnMoneyCardInfo" >
-           <property name="minimumSize" >
-            <size>
-             <width>110</width>
-             <height>26</height>
-            </size>
-           </property>
-           <property name="maximumSize" >
-            <size>
-             <width>110</width>
-             <height>26</height>
-            </size>
-           </property>
-           <property name="text" >
-            <string>&amp;Information</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer>
-           <property name="orientation" >
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" >
-            <size>
-             <width>381</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="tabMoneyLoad" >
-      <attribute name="title" >
-       <string>Money (Max, Min, Transfer)</string>
-      </attribute>
-      <layout class="QGridLayout" >
-       <property name="margin" >
-        <number>9</number>
-       </property>
-       <property name="spacing" >
-        <number>6</number>
-       </property>
-       <item row="0" column="0" >
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="label_26" >
-           <property name="minimumSize" >
-            <size>
-             <width>110</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize" >
-            <size>
-             <width>110</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="text" >
-            <string>Current money:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEditMoneyCardCurrentLoaded" >
-           <property name="cursor" >
-            <cursor>0</cursor>
-           </property>
-           <property name="readOnly" >
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="1" column="0" >
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="label_25" >
-           <property name="minimumSize" >
-            <size>
-             <width>110</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize" >
-            <size>
-             <width>110</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="text" >
-            <string>Max. money:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEditMoneyCardMaxLoaded" >
-           <property name="cursor" >
-            <cursor>0</cursor>
-           </property>
-           <property name="readOnly" >
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="2" column="0" >
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="label_27" >
-           <property name="minimumSize" >
-            <size>
-             <width>110</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize" >
-            <size>
-             <width>110</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="text" >
-            <string>Max. transfer:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEditMoneyCardMaxTransfer" >
-           <property name="cursor" >
-            <cursor>0</cursor>
-           </property>
-           <property name="readOnly" >
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="3" column="0" >
-        <widget class="QTreeWidget" name="treeWidget" />
-       </item>
-       <item row="4" column="0" >
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <widget class="QPushButton" name="btnMoneyCardLoad" >
-           <property name="minimumSize" >
-            <size>
-             <width>110</width>
-             <height>26</height>
-            </size>
-           </property>
-           <property name="maximumSize" >
-            <size>
-             <width>110</width>
-             <height>26</height>
-            </size>
-           </property>
-           <property name="text" >
-            <string>&amp;Moneytransfer</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer>
-           <property name="orientation" >
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" >
-            <size>
-             <width>691</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </widget>
-    </widget>
-   </widget>
-   <widget class="QWidget" name="page_2" >
-    <widget class="QTabWidget" name="tabWidget_4" >
-     <property name="geometry" >
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>721</width>
-       <height>331</height>
-      </rect>
-     </property>
-     <property name="currentIndex" >
-      <number>0</number>
-     </property>
-     <widget class="QWidget" name="tabMemoryCard" >
-      <attribute name="title" >
-       <string>Memory Cards</string>
-      </attribute>
-      <widget class="QGroupBox" name="groupBox_2" >
-       <property name="geometry" >
-        <rect>
-         <x>10</x>
-         <y>10</y>
-         <width>701</width>
-         <height>64</height>
-        </rect>
-       </property>
-       <property name="title" >
-        <string>Use card as:</string>
-       </property>
-       <layout class="QGridLayout" >
-        <property name="margin" >
-         <number>9</number>
-        </property>
-        <property name="spacing" >
-         <number>6</number>
-        </property>
-        <item row="0" column="0" >
-         <widget class="QComboBox" name="comboBoxUseCardAs" >
-          <item>
-           <property name="text" >
-            <string>Password card</string>
-           </property>
-          </item>
-          <item>
-           <property name="text" >
-            <string>E-Mail card</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QStackedWidget" name="stackedWidget" >
-       <property name="geometry" >
-        <rect>
-         <x>10</x>
-         <y>80</y>
-         <width>701</width>
-         <height>221</height>
-        </rect>
-       </property>
-       <property name="currentIndex" >
-        <number>0</number>
-       </property>
-       <widget class="QWidget" name="page_7" >
-        <widget class="QTreeWidget" name="treeWidgetPassword" >
-         <property name="geometry" >
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>701</width>
-           <height>101</height>
-          </rect>
-         </property>
-         <property name="contextMenuPolicy" >
-          <enum>Qt::CustomContextMenu</enum>
-         </property>
-         <column>
-          <property name="text" >
-           <string>Password</string>
-          </property>
-         </column>
-         <column>
-          <property name="text" >
-           <string>Password Information</string>
-          </property>
-         </column>
-        </widget>
-        <widget class="QWidget" name="layoutWidget_3" >
-         <property name="geometry" >
-          <rect>
-           <x>0</x>
-           <y>110</y>
-           <width>331</width>
-           <height>28</height>
-          </rect>
-         </property>
-         <layout class="QHBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
-          </property>
-          <property name="spacing" >
-           <number>6</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="label_32" >
-            <property name="minimumSize" >
-             <size>
-              <width>110</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="maximumSize" >
-             <size>
-              <width>110</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="text" >
-             <string>Password:</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="lineEditMemoryCardPassword" >
-            <property name="cursor" >
-             <cursor>0</cursor>
-            </property>
-            <property name="echoMode" >
-             <enum>QLineEdit::Password</enum>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-        <widget class="QWidget" name="widget" >
-         <property name="geometry" >
-          <rect>
-           <x>340</x>
-           <y>110</y>
-           <width>361</width>
-           <height>30</height>
-          </rect>
-         </property>
-         <layout class="QHBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
-          </property>
-          <property name="spacing" >
-           <number>6</number>
-          </property>
-          <item>
-           <widget class="QCheckBox" name="checkBoxUsePin" >
-            <property name="minimumSize" >
-             <size>
-              <width>15</width>
-              <height>15</height>
-             </size>
-            </property>
-            <property name="maximumSize" >
-             <size>
-              <width>15</width>
-              <height>15</height>
-             </size>
-            </property>
-            <property name="toolTip" >
-             <string>Use pin for this card</string>
-            </property>
-            <property name="whatsThis" >
-             <string>Use pin for this card</string>
-            </property>
-            <property name="text" >
-             <string/>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_33" >
-            <property name="enabled" >
-             <bool>false</bool>
-            </property>
-            <property name="minimumSize" >
-             <size>
-              <width>110</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="maximumSize" >
-             <size>
-              <width>110</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="text" >
-             <string>Pin:</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="lineEditMemoryCardPin" >
-            <property name="cursor" >
-             <cursor>0</cursor>
-            </property>
-            <property name="echoMode" >
-             <enum>QLineEdit::Password</enum>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-        <widget class="QWidget" name="layoutWidget_2" >
-         <property name="geometry" >
-          <rect>
-           <x>0</x>
-           <y>150</y>
-           <width>701</width>
-           <height>28</height>
-          </rect>
-         </property>
-         <layout class="QHBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
-          </property>
-          <property name="spacing" >
-           <number>6</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="label_31" >
-            <property name="minimumSize" >
-             <size>
-              <width>110</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="maximumSize" >
-             <size>
-              <width>110</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="text" >
-             <string>Password info.:</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="lineEditMemoryCardPasswordInfo" >
-            <property name="cursor" >
-             <cursor>0</cursor>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-        <widget class="QWidget" name="widget" >
-         <property name="geometry" >
-          <rect>
-           <x>0</x>
-           <y>190</y>
-           <width>701</width>
-           <height>28</height>
-          </rect>
-         </property>
-         <layout class="QHBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
-          </property>
-          <property name="spacing" >
-           <number>6</number>
-          </property>
-          <item>
-           <widget class="QPushButton" name="btnMemoryCardAddPwd" >
-            <property name="minimumSize" >
-             <size>
-              <width>110</width>
-              <height>26</height>
-             </size>
-            </property>
-            <property name="maximumSize" >
-             <size>
-              <width>110</width>
-              <height>26</height>
-             </size>
-            </property>
-            <property name="text" >
-             <string>&amp;Add</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="btnMemoryCardRemovePwd" >
-            <property name="minimumSize" >
-             <size>
-              <width>110</width>
-              <height>26</height>
-             </size>
-            </property>
-            <property name="maximumSize" >
-             <size>
-              <width>110</width>
-              <height>26</height>
-             </size>
-            </property>
-            <property name="text" >
-             <string>&amp;Remove</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="btnMemoryCardChangePwd" >
-            <property name="minimumSize" >
-             <size>
-              <width>110</width>
-              <height>26</height>
-             </size>
-            </property>
-            <property name="maximumSize" >
-             <size>
-              <width>110</width>
-              <height>26</height>
-             </size>
-            </property>
-            <property name="text" >
-             <string>&amp;Change</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="btnMemoryCardWritePwd" >
-            <property name="minimumSize" >
-             <size>
-              <width>110</width>
-              <height>26</height>
-             </size>
-            </property>
-            <property name="maximumSize" >
-             <size>
-              <width>110</width>
-              <height>26</height>
-             </size>
-            </property>
-            <property name="text" >
-             <string>&amp;Write</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="btnMemoryCardReadPwd" >
-            <property name="minimumSize" >
-             <size>
-              <width>110</width>
-              <height>26</height>
-             </size>
-            </property>
-            <property name="maximumSize" >
-             <size>
-              <width>110</width>
-              <height>26</height>
-             </size>
-            </property>
-            <property name="text" >
-             <string>R&amp;ead</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="btnMemoryCardCapacityPwd" >
-            <property name="minimumSize" >
-             <size>
-              <width>110</width>
-              <height>26</height>
-             </size>
-            </property>
-            <property name="maximumSize" >
-             <size>
-              <width>110</width>
-              <height>26</height>
-             </size>
-            </property>
-            <property name="text" >
-             <string>Ca&amp;pacity</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </widget>
-       <widget class="QWidget" name="page_9" >
-        <widget class="QWidget" name="layoutWidget_4" >
-         <property name="geometry" >
-          <rect>
-           <x>0</x>
-           <y>190</y>
-           <width>701</width>
-           <height>28</height>
-          </rect>
-         </property>
-         <layout class="QHBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
-          </property>
-          <property name="spacing" >
-           <number>6</number>
-          </property>
-          <item>
-           <widget class="QPushButton" name="btnMemoryCardAddEMail" >
-            <property name="minimumSize" >
-             <size>
-              <width>110</width>
-              <height>26</height>
-             </size>
-            </property>
-            <property name="maximumSize" >
-             <size>
-              <width>110</width>
-              <height>26</height>
-             </size>
-            </property>
-            <property name="text" >
-             <string>&amp;Add</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="btnMemoryCardRemoveEMail" >
-            <property name="minimumSize" >
-             <size>
-              <width>110</width>
-              <height>26</height>
-             </size>
-            </property>
-            <property name="maximumSize" >
-             <size>
-              <width>110</width>
-              <height>26</height>
-             </size>
-            </property>
-            <property name="text" >
-             <string>&amp;Remove</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="btnMemoryCardChangeEMail" >
-            <property name="minimumSize" >
-             <size>
-              <width>110</width>
-              <height>26</height>
-             </size>
-            </property>
-            <property name="maximumSize" >
-             <size>
-              <width>110</width>
-              <height>26</height>
-             </size>
-            </property>
-            <property name="text" >
-             <string>&amp;Change</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="btnMemoryCardWriteEMail" >
-            <property name="minimumSize" >
-             <size>
-              <width>110</width>
-              <height>26</height>
-             </size>
-            </property>
-            <property name="maximumSize" >
-             <size>
-              <width>110</width>
-              <height>26</height>
-             </size>
-            </property>
-            <property name="text" >
-             <string>&amp;Write</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="btnMemoryCardReadEMail" >
-            <property name="minimumSize" >
-             <size>
-              <width>110</width>
-              <height>26</height>
-             </size>
-            </property>
-            <property name="maximumSize" >
-             <size>
-              <width>110</width>
-              <height>26</height>
-             </size>
-            </property>
-            <property name="text" >
-             <string>R&amp;ead</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="btnMemoryCardCapacityEMail" >
-            <property name="minimumSize" >
-             <size>
-              <width>110</width>
-              <height>26</height>
-             </size>
-            </property>
-            <property name="maximumSize" >
-             <size>
-              <width>110</width>
-              <height>26</height>
-             </size>
-            </property>
-            <property name="text" >
-             <string>Ca&amp;pacity</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-        <widget class="QWidget" name="layoutWidget_5" >
-         <property name="geometry" >
-          <rect>
-           <x>0</x>
-           <y>150</y>
-           <width>701</width>
-           <height>28</height>
-          </rect>
-         </property>
-         <layout class="QHBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
-          </property>
-          <property name="spacing" >
-           <number>6</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="label_34" >
-            <property name="minimumSize" >
-             <size>
-              <width>110</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="maximumSize" >
-             <size>
-              <width>110</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="text" >
-             <string>E-Mail info.:</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="lineEditMemoryCardPasswordInfo_2" >
-            <property name="cursor" >
-             <cursor>0</cursor>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-        <widget class="QWidget" name="layoutWidget_7" >
-         <property name="geometry" >
-          <rect>
-           <x>340</x>
-           <y>110</y>
-           <width>361</width>
-           <height>30</height>
-          </rect>
-         </property>
-         <layout class="QHBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
-          </property>
-          <property name="spacing" >
-           <number>6</number>
-          </property>
-          <item>
-           <widget class="QCheckBox" name="checkBoxUsePin_2" >
-            <property name="minimumSize" >
-             <size>
-              <width>15</width>
-              <height>15</height>
-             </size>
-            </property>
-            <property name="maximumSize" >
-             <size>
-              <width>15</width>
-              <height>15</height>
-             </size>
-            </property>
-            <property name="toolTip" >
-             <string>Use pin for this card</string>
-            </property>
-            <property name="whatsThis" >
-             <string>Use pin for this card</string>
-            </property>
-            <property name="text" >
-             <string/>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_36" >
-            <property name="enabled" >
-             <bool>false</bool>
-            </property>
-            <property name="minimumSize" >
-             <size>
-              <width>110</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="maximumSize" >
-             <size>
-              <width>110</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="text" >
-             <string>Pin:</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="lineEditMemoryCardPin_2" >
-            <property name="cursor" >
-             <cursor>0</cursor>
-            </property>
-            <property name="echoMode" >
-             <enum>QLineEdit::Password</enum>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-        <widget class="QWidget" name="layoutWidget_6" >
-         <property name="geometry" >
-          <rect>
-           <x>0</x>
-           <y>110</y>
-           <width>331</width>
-           <height>28</height>
-          </rect>
-         </property>
-         <layout class="QHBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
-          </property>
-          <property name="spacing" >
-           <number>6</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="label_35" >
-            <property name="minimumSize" >
-             <size>
-              <width>110</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="maximumSize" >
-             <size>
-              <width>110</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="text" >
-             <string>E-Mail:</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="lineEditMemoryCardPassword_2" >
-            <property name="cursor" >
-             <cursor>0</cursor>
-            </property>
-            <property name="echoMode" >
-             <enum>QLineEdit::Password</enum>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-        <widget class="QTreeWidget" name="treeWidgetEMail" >
-         <property name="geometry" >
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>701</width>
-           <height>101</height>
-          </rect>
-         </property>
-         <column>
-          <property name="text" >
-           <string>E-Mail</string>
-          </property>
-         </column>
-         <column>
-          <property name="text" >
-           <string>E-Mail Information</string>
-          </property>
-         </column>
-        </widget>
-       </widget>
-      </widget>
-     </widget>
-    </widget>
-   </widget>
-   <widget class="QWidget" name="page_3" >
-    <widget class="QTabWidget" name="tabWidget_5" >
-     <property name="geometry" >
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>721</width>
-       <height>331</height>
-      </rect>
-     </property>
-     <property name="currentIndex" >
-      <number>0</number>
-     </property>
-     <widget class="QWidget" name="tabProcessorCard" >
-      <attribute name="title" >
-       <string>Processor Cards</string>
-      </attribute>
-     </widget>
-    </widget>
-   </widget>
-   <widget class="QWidget" name="page_4" >
-    <widget class="QTabWidget" name="tabWidget_6" >
-     <property name="geometry" >
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>721</width>
-       <height>321</height>
-      </rect>
-     </property>
-     <property name="currentIndex" >
-      <number>0</number>
-     </property>
-     <widget class="QWidget" name="tabKVKCard" >
-      <attribute name="title" >
-       <string>German Health Insurance Cards (KVK)</string>
-      </attribute>
-      <layout class="QGridLayout" >
-       <property name="margin" >
-        <number>9</number>
-       </property>
-       <property name="spacing" >
-        <number>6</number>
-       </property>
-       <item row="8" column="3" >
-        <spacer>
-         <property name="orientation" >
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" >
-          <size>
-           <width>201</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="8" column="0" >
-        <spacer>
-         <property name="orientation" >
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" >
-          <size>
-           <width>201</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="7" column="0" colspan="4" >
-        <spacer>
-         <property name="orientation" >
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" >
-          <size>
-           <width>561</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="8" column="1" colspan="2" >
-        <widget class="QPushButton" name="btnKVKCardInfo" >
-         <property name="minimumSize" >
-          <size>
-           <width>110</width>
-           <height>26</height>
-          </size>
-         </property>
-         <property name="maximumSize" >
-          <size>
-           <width>110</width>
-           <height>26</height>
-          </size>
-         </property>
-         <property name="text" >
-          <string>&amp;Information</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="2" colspan="2" >
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="label_11" >
-           <property name="minimumSize" >
-            <size>
-             <width>110</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize" >
-            <size>
-             <width>110</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="text" >
-            <string>Postalcode:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEditGHICPostalCode" >
-           <property name="readOnly" >
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="3" column="2" colspan="2" >
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="label_6" >
-           <property name="minimumSize" >
-            <size>
-             <width>110</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize" >
-            <size>
-             <width>110</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="text" >
-            <string>Name:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEditGHICName" >
-           <property name="readOnly" >
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="0" column="2" colspan="2" >
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="label_2" >
-           <property name="minimumSize" >
-            <size>
-             <width>110</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize" >
-            <size>
-             <width>110</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="text" >
-            <string>Companycode:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEditGHICCompanyCode" >
-           <property name="readOnly" >
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="1" column="2" colspan="2" >
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="label_8" >
-           <property name="minimumSize" >
-            <size>
-             <width>110</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize" >
-            <size>
-             <width>110</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="text" >
-            <string>Insurance Nr.:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEditGHICInsuranceNumber" >
-           <property name="readOnly" >
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="4" column="2" colspan="2" >
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="label_12" >
-           <property name="minimumSize" >
-            <size>
-             <width>110</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize" >
-            <size>
-             <width>110</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="text" >
-            <string>Checksum:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEditGHICChecksum" >
-           <property name="readOnly" >
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="6" column="2" colspan="2" >
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="label_13" >
-           <property name="minimumSize" >
-            <size>
-             <width>110</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize" >
-            <size>
-             <width>110</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="text" >
-            <string>East or West:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEditGHICEastOrWest" >
-           <property name="readOnly" >
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="2" column="2" colspan="2" >
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="label_15" >
-           <property name="minimumSize" >
-            <size>
-             <width>110</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize" >
-            <size>
-             <width>110</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="text" >
-            <string>Valid until:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEditGHICValidUntil" >
-           <property name="readOnly" >
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="6" column="0" colspan="2" >
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="label_10" >
-           <property name="minimumSize" >
-            <size>
-             <width>110</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize" >
-            <size>
-             <width>110</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="text" >
-            <string>Street:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEditGHICStreet" >
-           <property name="cursor" >
-            <cursor>0</cursor>
-           </property>
-           <property name="readOnly" >
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="5" column="0" colspan="2" >
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="label_9" >
-           <property name="minimumSize" >
-            <size>
-             <width>110</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize" >
-            <size>
-             <width>110</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="text" >
-            <string>City:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEditGHICCity" >
-           <property name="cursor" >
-            <cursor>0</cursor>
-           </property>
-           <property name="readOnly" >
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="4" column="0" colspan="2" >
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="label_7" >
-           <property name="minimumSize" >
-            <size>
-             <width>110</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize" >
-            <size>
-             <width>110</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="text" >
-            <string>Date of birth:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEditGHICDateOfBirth" >
-           <property name="cursor" >
-            <cursor>0</cursor>
-           </property>
-           <property name="readOnly" >
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="2" column="0" colspan="2" >
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="label_4" >
-           <property name="minimumSize" >
-            <size>
-             <width>110</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize" >
-            <size>
-             <width>110</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="text" >
-            <string>Insurance State:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEditGHICInsuranceState" >
-           <property name="cursor" >
-            <cursor>0</cursor>
-           </property>
-           <property name="readOnly" >
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="1" column="0" colspan="2" >
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="label_3" >
-           <property name="minimumSize" >
-            <size>
-             <width>110</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize" >
-            <size>
-             <width>110</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="text" >
-            <string>Card Nr.:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEditGHICCardNumber" >
-           <property name="cursor" >
-            <cursor>0</cursor>
-           </property>
-           <property name="readOnly" >
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="0" column="0" colspan="2" >
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="label" >
-           <property name="minimumSize" >
-            <size>
-             <width>110</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize" >
-            <size>
-             <width>110</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="text" >
-            <string>Companyname:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEditGHICCompanyName" >
-           <property name="cursor" >
-            <cursor>0</cursor>
-           </property>
-           <property name="readOnly" >
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="3" column="0" colspan="2" >
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="label_5" >
-           <property name="minimumSize" >
-            <size>
-             <width>110</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize" >
-            <size>
-             <width>110</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="text" >
-            <string>Forename:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEditGHICForeName" >
-           <property name="cursor" >
-            <cursor>0</cursor>
-           </property>
-           <property name="readOnly" >
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </widget>
-    </widget>
-   </widget>
-   <widget class="QWidget" name="page_5" >
-    <widget class="QTabWidget" name="tabWidget_7" >
-     <property name="geometry" >
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>721</width>
-       <height>321</height>
-      </rect>
-     </property>
-     <property name="currentIndex" >
-      <number>0</number>
-     </property>
-     <widget class="QWidget" name="tabDDVCard" >
-      <attribute name="title" >
-       <string>DDV Cards</string>
-      </attribute>
-     </widget>
-    </widget>
-   </widget>
-   <widget class="QWidget" name="page_6" >
-    <widget class="QTabWidget" name="tabWidget" >
-     <property name="geometry" >
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>721</width>
-       <height>331</height>
-      </rect>
-     </property>
-     <property name="currentIndex" >
-      <number>0</number>
-     </property>
-     <widget class="QWidget" name="tabRSACards" >
-      <attribute name="title" >
+     <item>
+      <property name="text" >
+       <string>Moneycard</string>
+      </property>
+      <property name="icon" >
+       <iconset resource="../res/qcr.qrc" >:/images/euro.png</iconset>
+      </property>
+     </item>
+     <item>
+      <property name="text" >
+       <string>Memorycard</string>
+      </property>
+      <property name="icon" >
+       <iconset resource="../res/qcr.qrc" >:/images/memory.png</iconset>
+      </property>
+     </item>
+     <item>
+      <property name="text" >
+       <string>Processorcard</string>
+      </property>
+      <property name="icon" >
+       <iconset resource="../res/qcr.qrc" >:/images/processor.png</iconset>
+      </property>
+     </item>
+     <item>
+      <property name="text" >
+       <string>GHIC</string>
+      </property>
+      <property name="icon" >
+       <iconset resource="../res/qcr.qrc" >:/images/kvk.png</iconset>
+      </property>
+     </item>
+     <item>
+      <property name="text" >
+       <string>DDV Card</string>
+      </property>
+      <property name="icon" >
+       <iconset resource="../res/qcr.qrc" >:/images/empty.png</iconset>
+      </property>
+     </item>
+     <item>
+      <property name="text" >
        <string>RSA Cards</string>
-      </attribute>
+      </property>
+      <property name="icon" >
+       <iconset resource="../res/qcr.qrc" >:/images/empty.png</iconset>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="0" column="1" >
+    <widget class="QStackedWidget" name="stackedWidgetCards" >
+     <property name="currentIndex" >
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="page" >
+      <layout class="QGridLayout" >
+       <item row="0" column="0" >
+        <widget class="QTabWidget" name="tabWidget_3" >
+         <property name="currentIndex" >
+          <number>0</number>
+         </property>
+         <widget class="QWidget" name="tabMoneyCard" >
+          <attribute name="title" >
+           <string>Money Cards (Geldkarte)</string>
+          </attribute>
+          <layout class="QGridLayout" >
+           <item row="0" column="0" >
+            <layout class="QGridLayout" >
+             <property name="leftMargin" >
+              <number>0</number>
+             </property>
+             <property name="topMargin" >
+              <number>0</number>
+             </property>
+             <property name="rightMargin" >
+              <number>0</number>
+             </property>
+             <property name="bottomMargin" >
+              <number>0</number>
+             </property>
+             <property name="horizontalSpacing" >
+              <number>6</number>
+             </property>
+             <property name="verticalSpacing" >
+              <number>6</number>
+             </property>
+             <item row="0" column="1" >
+              <layout class="QHBoxLayout" >
+               <property name="spacing" >
+                <number>6</number>
+               </property>
+               <property name="leftMargin" >
+                <number>0</number>
+               </property>
+               <property name="topMargin" >
+                <number>0</number>
+               </property>
+               <property name="rightMargin" >
+                <number>0</number>
+               </property>
+               <property name="bottomMargin" >
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_24" >
+                 <property name="minimumSize" >
+                  <size>
+                   <width>110</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize" >
+                  <size>
+                   <width>110</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="text" >
+                  <string>Short bankcode:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEditMoneyCardShortBankcode" >
+                 <property name="cursor" >
+                  <cursorShape>ArrowCursor</cursorShape>
+                 </property>
+                 <property name="readOnly" >
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="0" column="0" >
+              <layout class="QHBoxLayout" >
+               <property name="spacing" >
+                <number>6</number>
+               </property>
+               <property name="leftMargin" >
+                <number>0</number>
+               </property>
+               <property name="topMargin" >
+                <number>0</number>
+               </property>
+               <property name="rightMargin" >
+                <number>0</number>
+               </property>
+               <property name="bottomMargin" >
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_14" >
+                 <property name="minimumSize" >
+                  <size>
+                   <width>110</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize" >
+                  <size>
+                   <width>110</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="text" >
+                  <string>Branchkey:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEditMoneyCardBranchKey" >
+                 <property name="cursor" >
+                  <cursorShape>ArrowCursor</cursorShape>
+                 </property>
+                 <property name="readOnly" >
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="4" column="1" >
+              <layout class="QHBoxLayout" >
+               <property name="spacing" >
+                <number>6</number>
+               </property>
+               <property name="leftMargin" >
+                <number>0</number>
+               </property>
+               <property name="topMargin" >
+                <number>0</number>
+               </property>
+               <property name="rightMargin" >
+                <number>0</number>
+               </property>
+               <property name="bottomMargin" >
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_22" >
+                 <property name="minimumSize" >
+                  <size>
+                   <width>110</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize" >
+                  <size>
+                   <width>110</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="text" >
+                  <string>Currency:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEditMoneyCardCurrency" >
+                 <property name="cursor" >
+                  <cursorShape>ArrowCursor</cursorShape>
+                 </property>
+                 <property name="readOnly" >
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="1" column="0" >
+              <layout class="QHBoxLayout" >
+               <property name="spacing" >
+                <number>6</number>
+               </property>
+               <property name="leftMargin" >
+                <number>0</number>
+               </property>
+               <property name="topMargin" >
+                <number>0</number>
+               </property>
+               <property name="rightMargin" >
+                <number>0</number>
+               </property>
+               <property name="bottomMargin" >
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_16" >
+                 <property name="minimumSize" >
+                  <size>
+                   <width>110</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize" >
+                  <size>
+                   <width>110</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="text" >
+                  <string>Card Nr.:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEditMoneyCardCardNumber" >
+                 <property name="cursor" >
+                  <cursorShape>ArrowCursor</cursorShape>
+                 </property>
+                 <property name="readOnly" >
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="3" column="1" >
+              <layout class="QHBoxLayout" >
+               <property name="spacing" >
+                <number>6</number>
+               </property>
+               <property name="leftMargin" >
+                <number>0</number>
+               </property>
+               <property name="topMargin" >
+                <number>0</number>
+               </property>
+               <property name="rightMargin" >
+                <number>0</number>
+               </property>
+               <property name="bottomMargin" >
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_20" >
+                 <property name="minimumSize" >
+                  <size>
+                   <width>110</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize" >
+                  <size>
+                   <width>110</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="text" >
+                  <string>Valid until:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEditMoneyCardValidUntil" >
+                 <property name="cursor" >
+                  <cursorShape>ArrowCursor</cursorShape>
+                 </property>
+                 <property name="readOnly" >
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="1" column="1" >
+              <layout class="QHBoxLayout" >
+               <property name="spacing" >
+                <number>6</number>
+               </property>
+               <property name="leftMargin" >
+                <number>0</number>
+               </property>
+               <property name="topMargin" >
+                <number>0</number>
+               </property>
+               <property name="rightMargin" >
+                <number>0</number>
+               </property>
+               <property name="bottomMargin" >
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_29" >
+                 <property name="minimumSize" >
+                  <size>
+                   <width>110</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize" >
+                  <size>
+                   <width>110</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="text" >
+                  <string>Card type:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEditMoneyCardCardType" >
+                 <property name="cursor" >
+                  <cursorShape>ArrowCursor</cursorShape>
+                 </property>
+                 <property name="readOnly" >
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="5" column="0" >
+              <layout class="QHBoxLayout" >
+               <property name="spacing" >
+                <number>6</number>
+               </property>
+               <property name="leftMargin" >
+                <number>0</number>
+               </property>
+               <property name="topMargin" >
+                <number>0</number>
+               </property>
+               <property name="rightMargin" >
+                <number>0</number>
+               </property>
+               <property name="bottomMargin" >
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_17" >
+                 <property name="minimumSize" >
+                  <size>
+                   <width>110</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize" >
+                  <size>
+                   <width>110</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="text" >
+                  <string>Country:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEditMoneyCardCountry" >
+                 <property name="cursor" >
+                  <cursorShape>ArrowCursor</cursorShape>
+                 </property>
+                 <property name="readOnly" >
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="2" column="0" >
+              <layout class="QHBoxLayout" >
+               <property name="spacing" >
+                <number>6</number>
+               </property>
+               <property name="leftMargin" >
+                <number>0</number>
+               </property>
+               <property name="topMargin" >
+                <number>0</number>
+               </property>
+               <property name="rightMargin" >
+                <number>0</number>
+               </property>
+               <property name="bottomMargin" >
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_19" >
+                 <property name="minimumSize" >
+                  <size>
+                   <width>110</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize" >
+                  <size>
+                   <width>110</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="text" >
+                  <string>Factor:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEditMoneyCardFactor" >
+                 <property name="cursor" >
+                  <cursorShape>ArrowCursor</cursorShape>
+                 </property>
+                 <property name="readOnly" >
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="5" column="1" >
+              <layout class="QHBoxLayout" >
+               <property name="spacing" >
+                <number>6</number>
+               </property>
+               <property name="leftMargin" >
+                <number>0</number>
+               </property>
+               <property name="topMargin" >
+                <number>0</number>
+               </property>
+               <property name="rightMargin" >
+                <number>0</number>
+               </property>
+               <property name="bottomMargin" >
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_30" >
+                 <property name="minimumSize" >
+                  <size>
+                   <width>110</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize" >
+                  <size>
+                   <width>110</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="text" >
+                  <string>Bankcode:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEditMoneyCardBankCode" >
+                 <property name="cursor" >
+                  <cursorShape>ArrowCursor</cursorShape>
+                 </property>
+                 <property name="readOnly" >
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="3" column="0" >
+              <layout class="QHBoxLayout" >
+               <property name="spacing" >
+                <number>6</number>
+               </property>
+               <property name="leftMargin" >
+                <number>0</number>
+               </property>
+               <property name="topMargin" >
+                <number>0</number>
+               </property>
+               <property name="rightMargin" >
+                <number>0</number>
+               </property>
+               <property name="bottomMargin" >
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_18" >
+                 <property name="minimumSize" >
+                  <size>
+                   <width>110</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize" >
+                  <size>
+                   <width>110</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="text" >
+                  <string>Valid since:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEditMoneyCardValidSince" >
+                 <property name="cursor" >
+                  <cursorShape>ArrowCursor</cursorShape>
+                 </property>
+                 <property name="readOnly" >
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="2" column="1" >
+              <layout class="QHBoxLayout" >
+               <property name="spacing" >
+                <number>6</number>
+               </property>
+               <property name="leftMargin" >
+                <number>0</number>
+               </property>
+               <property name="topMargin" >
+                <number>0</number>
+               </property>
+               <property name="rightMargin" >
+                <number>0</number>
+               </property>
+               <property name="bottomMargin" >
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_21" >
+                 <property name="minimumSize" >
+                  <size>
+                   <width>110</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize" >
+                  <size>
+                   <width>110</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="text" >
+                  <string>Checksum:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEditMoneyCardCheckSum" >
+                 <property name="cursor" >
+                  <cursorShape>ArrowCursor</cursorShape>
+                 </property>
+                 <property name="readOnly" >
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="6" column="0" colspan="2" >
+              <layout class="QHBoxLayout" >
+               <property name="spacing" >
+                <number>6</number>
+               </property>
+               <property name="leftMargin" >
+                <number>0</number>
+               </property>
+               <property name="topMargin" >
+                <number>0</number>
+               </property>
+               <property name="rightMargin" >
+                <number>0</number>
+               </property>
+               <property name="bottomMargin" >
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_28" >
+                 <property name="minimumSize" >
+                  <size>
+                   <width>110</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize" >
+                  <size>
+                   <width>110</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="text" >
+                  <string>Account Id:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEditMoneyCardAccountId" >
+                 <property name="cursor" >
+                  <cursorShape>ArrowCursor</cursorShape>
+                 </property>
+                 <property name="readOnly" >
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="4" column="0" >
+              <layout class="QHBoxLayout" >
+               <property name="spacing" >
+                <number>6</number>
+               </property>
+               <property name="leftMargin" >
+                <number>0</number>
+               </property>
+               <property name="topMargin" >
+                <number>0</number>
+               </property>
+               <property name="rightMargin" >
+                <number>0</number>
+               </property>
+               <property name="bottomMargin" >
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_23" >
+                 <property name="minimumSize" >
+                  <size>
+                   <width>110</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize" >
+                  <size>
+                   <width>110</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="text" >
+                  <string>Chipversion:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEditMoneyCardChipVersion" >
+                 <property name="cursor" >
+                  <cursorShape>ArrowCursor</cursorShape>
+                 </property>
+                 <property name="readOnly" >
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </item>
+           <item row="1" column="0" >
+            <spacer>
+             <property name="orientation" >
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" >
+              <size>
+               <width>20</width>
+               <height>16</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="2" column="0" >
+            <layout class="QHBoxLayout" >
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <property name="leftMargin" >
+              <number>0</number>
+             </property>
+             <property name="topMargin" >
+              <number>0</number>
+             </property>
+             <property name="rightMargin" >
+              <number>0</number>
+             </property>
+             <property name="bottomMargin" >
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QPushButton" name="btnMoneyCardInfo" >
+               <property name="minimumSize" >
+                <size>
+                 <width>110</width>
+                 <height>26</height>
+                </size>
+               </property>
+               <property name="maximumSize" >
+                <size>
+                 <width>110</width>
+                 <height>26</height>
+                </size>
+               </property>
+               <property name="text" >
+                <string>&amp;Information</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer>
+               <property name="orientation" >
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" >
+                <size>
+                 <width>381</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="tabMoneyLoad" >
+          <attribute name="title" >
+           <string>Money (Max, Min, Transfer)</string>
+          </attribute>
+          <layout class="QGridLayout" >
+           <property name="leftMargin" >
+            <number>9</number>
+           </property>
+           <property name="topMargin" >
+            <number>9</number>
+           </property>
+           <property name="rightMargin" >
+            <number>9</number>
+           </property>
+           <property name="bottomMargin" >
+            <number>9</number>
+           </property>
+           <property name="horizontalSpacing" >
+            <number>6</number>
+           </property>
+           <property name="verticalSpacing" >
+            <number>6</number>
+           </property>
+           <item row="0" column="0" >
+            <layout class="QHBoxLayout" >
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <property name="leftMargin" >
+              <number>0</number>
+             </property>
+             <property name="topMargin" >
+              <number>0</number>
+             </property>
+             <property name="rightMargin" >
+              <number>0</number>
+             </property>
+             <property name="bottomMargin" >
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_26" >
+               <property name="minimumSize" >
+                <size>
+                 <width>110</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize" >
+                <size>
+                 <width>110</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text" >
+                <string>Current money:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEditMoneyCardCurrentLoaded" >
+               <property name="cursor" >
+                <cursorShape>ArrowCursor</cursorShape>
+               </property>
+               <property name="readOnly" >
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="1" column="0" >
+            <layout class="QHBoxLayout" >
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <property name="leftMargin" >
+              <number>0</number>
+             </property>
+             <property name="topMargin" >
+              <number>0</number>
+             </property>
+             <property name="rightMargin" >
+              <number>0</number>
+             </property>
+             <property name="bottomMargin" >
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_25" >
+               <property name="minimumSize" >
+                <size>
+                 <width>110</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize" >
+                <size>
+                 <width>110</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text" >
+                <string>Max. money:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEditMoneyCardMaxLoaded" >
+               <property name="cursor" >
+                <cursorShape>ArrowCursor</cursorShape>
+               </property>
+               <property name="readOnly" >
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="2" column="0" >
+            <layout class="QHBoxLayout" >
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <property name="leftMargin" >
+              <number>0</number>
+             </property>
+             <property name="topMargin" >
+              <number>0</number>
+             </property>
+             <property name="rightMargin" >
+              <number>0</number>
+             </property>
+             <property name="bottomMargin" >
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_27" >
+               <property name="minimumSize" >
+                <size>
+                 <width>110</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize" >
+                <size>
+                 <width>110</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text" >
+                <string>Max. transfer:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEditMoneyCardMaxTransfer" >
+               <property name="cursor" >
+                <cursorShape>ArrowCursor</cursorShape>
+               </property>
+               <property name="readOnly" >
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="3" column="0" >
+            <widget class="QTreeWidget" name="treeWidget" >
+             <column>
+              <property name="text" >
+               <string/>
+              </property>
+             </column>
+            </widget>
+           </item>
+           <item row="4" column="0" >
+            <layout class="QHBoxLayout" >
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <property name="leftMargin" >
+              <number>0</number>
+             </property>
+             <property name="topMargin" >
+              <number>0</number>
+             </property>
+             <property name="rightMargin" >
+              <number>0</number>
+             </property>
+             <property name="bottomMargin" >
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QPushButton" name="btnMoneyCardLoad" >
+               <property name="minimumSize" >
+                <size>
+                 <width>110</width>
+                 <height>26</height>
+                </size>
+               </property>
+               <property name="maximumSize" >
+                <size>
+                 <width>110</width>
+                 <height>26</height>
+                </size>
+               </property>
+               <property name="text" >
+                <string>&amp;Moneytransfer</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer>
+               <property name="orientation" >
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" >
+                <size>
+                 <width>691</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="page_2" >
+      <layout class="QGridLayout" >
+       <item row="0" column="0" >
+        <widget class="QTabWidget" name="tabWidget_4" >
+         <property name="currentIndex" >
+          <number>0</number>
+         </property>
+         <widget class="QWidget" name="tabMemoryCard" >
+          <attribute name="title" >
+           <string>Memory Cards</string>
+          </attribute>
+          <layout class="QGridLayout" >
+           <item row="0" column="0" >
+            <widget class="QGroupBox" name="groupBox_2" >
+             <property name="title" >
+              <string>Use card as:</string>
+             </property>
+             <layout class="QGridLayout" >
+              <property name="leftMargin" >
+               <number>9</number>
+              </property>
+              <property name="topMargin" >
+               <number>9</number>
+              </property>
+              <property name="rightMargin" >
+               <number>9</number>
+              </property>
+              <property name="bottomMargin" >
+               <number>9</number>
+              </property>
+              <property name="horizontalSpacing" >
+               <number>6</number>
+              </property>
+              <property name="verticalSpacing" >
+               <number>6</number>
+              </property>
+              <item row="0" column="0" >
+               <widget class="QComboBox" name="comboBoxUseCardAs" >
+                <item>
+                 <property name="text" >
+                  <string>Password card</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text" >
+                  <string>E-Mail card</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="1" column="0" >
+            <widget class="QStackedWidget" name="stackedWidget" >
+             <property name="currentIndex" >
+              <number>0</number>
+             </property>
+             <widget class="QWidget" name="page_7" >
+              <layout class="QGridLayout" >
+               <item row="0" column="0" colspan="2" >
+                <widget class="QTreeWidget" name="treeWidgetPassword" >
+                 <property name="contextMenuPolicy" >
+                  <enum>Qt::CustomContextMenu</enum>
+                 </property>
+                 <column>
+                  <property name="text" >
+                   <string>Password</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text" >
+                   <string>Password Information</string>
+                  </property>
+                 </column>
+                </widget>
+               </item>
+               <item row="1" column="0" >
+                <layout class="QHBoxLayout" >
+                 <property name="spacing" >
+                  <number>6</number>
+                 </property>
+                 <property name="leftMargin" >
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin" >
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin" >
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin" >
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="label_32" >
+                   <property name="minimumSize" >
+                    <size>
+                     <width>110</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize" >
+                    <size>
+                     <width>110</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text" >
+                    <string>Password:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="lineEditMemoryCardPassword" >
+                   <property name="cursor" >
+                    <cursorShape>ArrowCursor</cursorShape>
+                   </property>
+                   <property name="echoMode" >
+                    <enum>QLineEdit::Password</enum>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item row="1" column="1" >
+                <layout class="QHBoxLayout" >
+                 <property name="spacing" >
+                  <number>6</number>
+                 </property>
+                 <property name="leftMargin" >
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin" >
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin" >
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin" >
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QCheckBox" name="checkBoxUsePin" >
+                   <property name="minimumSize" >
+                    <size>
+                     <width>15</width>
+                     <height>15</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize" >
+                    <size>
+                     <width>15</width>
+                     <height>15</height>
+                    </size>
+                   </property>
+                   <property name="toolTip" >
+                    <string>Use pin for this card</string>
+                   </property>
+                   <property name="whatsThis" >
+                    <string>Use pin for this card</string>
+                   </property>
+                   <property name="text" >
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_33" >
+                   <property name="enabled" >
+                    <bool>false</bool>
+                   </property>
+                   <property name="minimumSize" >
+                    <size>
+                     <width>110</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize" >
+                    <size>
+                     <width>110</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text" >
+                    <string>Pin:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="lineEditMemoryCardPin" >
+                   <property name="enabled" >
+                    <bool>false</bool>
+                   </property>
+                   <property name="cursor" >
+                    <cursorShape>ArrowCursor</cursorShape>
+                   </property>
+                   <property name="echoMode" >
+                    <enum>QLineEdit::Password</enum>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item row="2" column="0" colspan="2" >
+                <layout class="QHBoxLayout" >
+                 <property name="spacing" >
+                  <number>6</number>
+                 </property>
+                 <property name="leftMargin" >
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin" >
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin" >
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin" >
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="label_31" >
+                   <property name="minimumSize" >
+                    <size>
+                     <width>110</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize" >
+                    <size>
+                     <width>110</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text" >
+                    <string>Password info.:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="lineEditMemoryCardPasswordInfo" >
+                   <property name="cursor" >
+                    <cursorShape>ArrowCursor</cursorShape>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="page_9" >
+              <layout class="QGridLayout" >
+               <item row="0" column="0" colspan="2" >
+                <widget class="QTreeWidget" name="treeWidgetEMail" >
+                 <column>
+                  <property name="text" >
+                   <string>E-Mail</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text" >
+                   <string>E-Mail Information</string>
+                  </property>
+                 </column>
+                </widget>
+               </item>
+               <item row="1" column="0" >
+                <layout class="QHBoxLayout" >
+                 <property name="spacing" >
+                  <number>6</number>
+                 </property>
+                 <property name="leftMargin" >
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin" >
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin" >
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin" >
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="label_35" >
+                   <property name="minimumSize" >
+                    <size>
+                     <width>110</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize" >
+                    <size>
+                     <width>110</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text" >
+                    <string>E-Mail:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="lineEditMemoryCardPassword_2" >
+                   <property name="cursor" >
+                    <cursorShape>ArrowCursor</cursorShape>
+                   </property>
+                   <property name="echoMode" >
+                    <enum>QLineEdit::Password</enum>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item row="1" column="1" >
+                <layout class="QHBoxLayout" >
+                 <property name="spacing" >
+                  <number>6</number>
+                 </property>
+                 <property name="leftMargin" >
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin" >
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin" >
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin" >
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QCheckBox" name="checkBoxUsePin_2" >
+                   <property name="minimumSize" >
+                    <size>
+                     <width>15</width>
+                     <height>15</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize" >
+                    <size>
+                     <width>15</width>
+                     <height>15</height>
+                    </size>
+                   </property>
+                   <property name="toolTip" >
+                    <string>Use pin for this card</string>
+                   </property>
+                   <property name="whatsThis" >
+                    <string>Use pin for this card</string>
+                   </property>
+                   <property name="text" >
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_36" >
+                   <property name="enabled" >
+                    <bool>false</bool>
+                   </property>
+                   <property name="minimumSize" >
+                    <size>
+                     <width>110</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize" >
+                    <size>
+                     <width>110</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text" >
+                    <string>Pin:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="lineEditMemoryCardPin_2" >
+                   <property name="cursor" >
+                    <cursorShape>ArrowCursor</cursorShape>
+                   </property>
+                   <property name="echoMode" >
+                    <enum>QLineEdit::Password</enum>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item row="2" column="0" colspan="2" >
+                <layout class="QHBoxLayout" >
+                 <property name="spacing" >
+                  <number>6</number>
+                 </property>
+                 <property name="leftMargin" >
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin" >
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin" >
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin" >
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="label_34" >
+                   <property name="minimumSize" >
+                    <size>
+                     <width>110</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize" >
+                    <size>
+                     <width>110</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text" >
+                    <string>E-Mail info.:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="lineEditMemoryCardPasswordInfo_2" >
+                   <property name="cursor" >
+                    <cursorShape>ArrowCursor</cursorShape>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+           </item>
+           <item row="2" column="0" >
+            <widget class="QLabel" name="label_37" >
+             <property name="text" >
+              <string>****</string>
+             </property>
+             <property name="alignment" >
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0" >
+            <layout class="QHBoxLayout" >
+             <item>
+              <widget class="QPushButton" name="btnMemoryCardAdd" >
+               <property name="minimumSize" >
+                <size>
+                 <width>110</width>
+                 <height>26</height>
+                </size>
+               </property>
+               <property name="maximumSize" >
+                <size>
+                 <width>110</width>
+                 <height>26</height>
+                </size>
+               </property>
+               <property name="text" >
+                <string>&amp;Add</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btnMemoryCardRemove" >
+               <property name="minimumSize" >
+                <size>
+                 <width>110</width>
+                 <height>26</height>
+                </size>
+               </property>
+               <property name="maximumSize" >
+                <size>
+                 <width>110</width>
+                 <height>26</height>
+                </size>
+               </property>
+               <property name="text" >
+                <string>&amp;Remove</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btnMemoryCardChange" >
+               <property name="minimumSize" >
+                <size>
+                 <width>110</width>
+                 <height>26</height>
+                </size>
+               </property>
+               <property name="maximumSize" >
+                <size>
+                 <width>110</width>
+                 <height>26</height>
+                </size>
+               </property>
+               <property name="text" >
+                <string>&amp;Change</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btnMemoryCardWrite" >
+               <property name="minimumSize" >
+                <size>
+                 <width>110</width>
+                 <height>26</height>
+                </size>
+               </property>
+               <property name="maximumSize" >
+                <size>
+                 <width>110</width>
+                 <height>26</height>
+                </size>
+               </property>
+               <property name="text" >
+                <string>&amp;Write</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btnMemoryCardRead" >
+               <property name="minimumSize" >
+                <size>
+                 <width>110</width>
+                 <height>26</height>
+                </size>
+               </property>
+               <property name="maximumSize" >
+                <size>
+                 <width>110</width>
+                 <height>26</height>
+                </size>
+               </property>
+               <property name="text" >
+                <string>R&amp;ead</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btnMemoryCardCapacity" >
+               <property name="minimumSize" >
+                <size>
+                 <width>110</width>
+                 <height>26</height>
+                </size>
+               </property>
+               <property name="maximumSize" >
+                <size>
+                 <width>110</width>
+                 <height>26</height>
+                </size>
+               </property>
+               <property name="text" >
+                <string>Ca&amp;pacity</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="page_3" >
+      <layout class="QGridLayout" >
+       <item row="0" column="0" >
+        <widget class="QTabWidget" name="tabWidget_5" >
+         <property name="currentIndex" >
+          <number>0</number>
+         </property>
+         <widget class="QWidget" name="tabProcessorCard" >
+          <attribute name="title" >
+           <string>Processor Cards</string>
+          </attribute>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="page_4" >
+      <layout class="QGridLayout" >
+       <item row="0" column="0" >
+        <widget class="QTabWidget" name="tabWidget_6" >
+         <property name="currentIndex" >
+          <number>0</number>
+         </property>
+         <widget class="QWidget" name="tabKVKCard" >
+          <attribute name="title" >
+           <string>German Health Insurance Cards (KVK)</string>
+          </attribute>
+          <layout class="QGridLayout" >
+           <item row="0" column="0" colspan="2" >
+            <layout class="QHBoxLayout" >
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <property name="leftMargin" >
+              <number>0</number>
+             </property>
+             <property name="topMargin" >
+              <number>0</number>
+             </property>
+             <property name="rightMargin" >
+              <number>0</number>
+             </property>
+             <property name="bottomMargin" >
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label" >
+               <property name="minimumSize" >
+                <size>
+                 <width>110</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize" >
+                <size>
+                 <width>110</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text" >
+                <string>Companyname:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEditGHICCompanyName" >
+               <property name="cursor" >
+                <cursorShape>ArrowCursor</cursorShape>
+               </property>
+               <property name="readOnly" >
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="0" column="2" colspan="2" >
+            <layout class="QHBoxLayout" >
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <property name="leftMargin" >
+              <number>0</number>
+             </property>
+             <property name="topMargin" >
+              <number>0</number>
+             </property>
+             <property name="rightMargin" >
+              <number>0</number>
+             </property>
+             <property name="bottomMargin" >
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_2" >
+               <property name="minimumSize" >
+                <size>
+                 <width>110</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize" >
+                <size>
+                 <width>110</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text" >
+                <string>Companycode:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEditGHICCompanyCode" >
+               <property name="readOnly" >
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="1" column="0" colspan="2" >
+            <layout class="QHBoxLayout" >
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <property name="leftMargin" >
+              <number>0</number>
+             </property>
+             <property name="topMargin" >
+              <number>0</number>
+             </property>
+             <property name="rightMargin" >
+              <number>0</number>
+             </property>
+             <property name="bottomMargin" >
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_3" >
+               <property name="minimumSize" >
+                <size>
+                 <width>110</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize" >
+                <size>
+                 <width>110</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text" >
+                <string>Card Nr.:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEditGHICCardNumber" >
+               <property name="cursor" >
+                <cursorShape>ArrowCursor</cursorShape>
+               </property>
+               <property name="readOnly" >
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="1" column="2" colspan="2" >
+            <layout class="QHBoxLayout" >
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <property name="leftMargin" >
+              <number>0</number>
+             </property>
+             <property name="topMargin" >
+              <number>0</number>
+             </property>
+             <property name="rightMargin" >
+              <number>0</number>
+             </property>
+             <property name="bottomMargin" >
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_8" >
+               <property name="minimumSize" >
+                <size>
+                 <width>110</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize" >
+                <size>
+                 <width>110</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text" >
+                <string>Insurance Nr.:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEditGHICInsuranceNumber" >
+               <property name="readOnly" >
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="2" column="0" colspan="2" >
+            <layout class="QHBoxLayout" >
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <property name="leftMargin" >
+              <number>0</number>
+             </property>
+             <property name="topMargin" >
+              <number>0</number>
+             </property>
+             <property name="rightMargin" >
+              <number>0</number>
+             </property>
+             <property name="bottomMargin" >
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_4" >
+               <property name="minimumSize" >
+                <size>
+                 <width>110</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize" >
+                <size>
+                 <width>110</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text" >
+                <string>Insurance State:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEditGHICInsuranceState" >
+               <property name="cursor" >
+                <cursorShape>ArrowCursor</cursorShape>
+               </property>
+               <property name="readOnly" >
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="2" column="2" colspan="2" >
+            <layout class="QHBoxLayout" >
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <property name="leftMargin" >
+              <number>0</number>
+             </property>
+             <property name="topMargin" >
+              <number>0</number>
+             </property>
+             <property name="rightMargin" >
+              <number>0</number>
+             </property>
+             <property name="bottomMargin" >
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_15" >
+               <property name="minimumSize" >
+                <size>
+                 <width>110</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize" >
+                <size>
+                 <width>110</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text" >
+                <string>Valid until:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEditGHICValidUntil" >
+               <property name="readOnly" >
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="3" column="0" colspan="2" >
+            <layout class="QHBoxLayout" >
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <property name="leftMargin" >
+              <number>0</number>
+             </property>
+             <property name="topMargin" >
+              <number>0</number>
+             </property>
+             <property name="rightMargin" >
+              <number>0</number>
+             </property>
+             <property name="bottomMargin" >
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_5" >
+               <property name="minimumSize" >
+                <size>
+                 <width>110</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize" >
+                <size>
+                 <width>110</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text" >
+                <string>Forename:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEditGHICForeName" >
+               <property name="cursor" >
+                <cursorShape>ArrowCursor</cursorShape>
+               </property>
+               <property name="readOnly" >
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="3" column="2" colspan="2" >
+            <layout class="QHBoxLayout" >
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <property name="leftMargin" >
+              <number>0</number>
+             </property>
+             <property name="topMargin" >
+              <number>0</number>
+             </property>
+             <property name="rightMargin" >
+              <number>0</number>
+             </property>
+             <property name="bottomMargin" >
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_6" >
+               <property name="minimumSize" >
+                <size>
+                 <width>110</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize" >
+                <size>
+                 <width>110</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text" >
+                <string>Name:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEditGHICName" >
+               <property name="readOnly" >
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="4" column="0" colspan="2" >
+            <layout class="QHBoxLayout" >
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <property name="leftMargin" >
+              <number>0</number>
+             </property>
+             <property name="topMargin" >
+              <number>0</number>
+             </property>
+             <property name="rightMargin" >
+              <number>0</number>
+             </property>
+             <property name="bottomMargin" >
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_7" >
+               <property name="minimumSize" >
+                <size>
+                 <width>110</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize" >
+                <size>
+                 <width>110</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text" >
+                <string>Date of birth:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEditGHICDateOfBirth" >
+               <property name="cursor" >
+                <cursorShape>ArrowCursor</cursorShape>
+               </property>
+               <property name="readOnly" >
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="4" column="2" colspan="2" >
+            <layout class="QHBoxLayout" >
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <property name="leftMargin" >
+              <number>0</number>
+             </property>
+             <property name="topMargin" >
+              <number>0</number>
+             </property>
+             <property name="rightMargin" >
+              <number>0</number>
+             </property>
+             <property name="bottomMargin" >
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_12" >
+               <property name="minimumSize" >
+                <size>
+                 <width>110</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize" >
+                <size>
+                 <width>110</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text" >
+                <string>Checksum:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEditGHICChecksum" >
+               <property name="readOnly" >
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="5" column="0" colspan="2" >
+            <layout class="QHBoxLayout" >
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <property name="leftMargin" >
+              <number>0</number>
+             </property>
+             <property name="topMargin" >
+              <number>0</number>
+             </property>
+             <property name="rightMargin" >
+              <number>0</number>
+             </property>
+             <property name="bottomMargin" >
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_9" >
+               <property name="minimumSize" >
+                <size>
+                 <width>110</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize" >
+                <size>
+                 <width>110</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text" >
+                <string>City:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEditGHICCity" >
+               <property name="cursor" >
+                <cursorShape>ArrowCursor</cursorShape>
+               </property>
+               <property name="readOnly" >
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="5" column="2" colspan="2" >
+            <layout class="QHBoxLayout" >
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <property name="leftMargin" >
+              <number>0</number>
+             </property>
+             <property name="topMargin" >
+              <number>0</number>
+             </property>
+             <property name="rightMargin" >
+              <number>0</number>
+             </property>
+             <property name="bottomMargin" >
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_11" >
+               <property name="minimumSize" >
+                <size>
+                 <width>110</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize" >
+                <size>
+                 <width>110</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text" >
+                <string>Postalcode:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEditGHICPostalCode" >
+               <property name="readOnly" >
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="6" column="0" colspan="2" >
+            <layout class="QHBoxLayout" >
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <property name="leftMargin" >
+              <number>0</number>
+             </property>
+             <property name="topMargin" >
+              <number>0</number>
+             </property>
+             <property name="rightMargin" >
+              <number>0</number>
+             </property>
+             <property name="bottomMargin" >
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_10" >
+               <property name="minimumSize" >
+                <size>
+                 <width>110</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize" >
+                <size>
+                 <width>110</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text" >
+                <string>Street:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEditGHICStreet" >
+               <property name="cursor" >
+                <cursorShape>ArrowCursor</cursorShape>
+               </property>
+               <property name="readOnly" >
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="6" column="2" colspan="2" >
+            <layout class="QHBoxLayout" >
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <property name="leftMargin" >
+              <number>0</number>
+             </property>
+             <property name="topMargin" >
+              <number>0</number>
+             </property>
+             <property name="rightMargin" >
+              <number>0</number>
+             </property>
+             <property name="bottomMargin" >
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_13" >
+               <property name="minimumSize" >
+                <size>
+                 <width>110</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize" >
+                <size>
+                 <width>110</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text" >
+                <string>East or West:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEditGHICEastOrWest" >
+               <property name="readOnly" >
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="7" column="0" colspan="4" >
+            <spacer>
+             <property name="orientation" >
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" >
+              <size>
+               <width>561</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="8" column="0" >
+            <spacer>
+             <property name="orientation" >
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" >
+              <size>
+               <width>201</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="8" column="1" colspan="2" >
+            <widget class="QPushButton" name="btnKVKCardInfo" >
+             <property name="minimumSize" >
+              <size>
+               <width>110</width>
+               <height>26</height>
+              </size>
+             </property>
+             <property name="maximumSize" >
+              <size>
+               <width>110</width>
+               <height>26</height>
+              </size>
+             </property>
+             <property name="text" >
+              <string>&amp;Information</string>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="3" >
+            <spacer>
+             <property name="orientation" >
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" >
+              <size>
+               <width>201</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="page_5" >
+      <layout class="QGridLayout" >
+       <item row="0" column="0" >
+        <widget class="QTabWidget" name="tabWidget_7" >
+         <property name="currentIndex" >
+          <number>0</number>
+         </property>
+         <widget class="QWidget" name="tabDDVCard" >
+          <attribute name="title" >
+           <string>DDV Cards</string>
+          </attribute>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="page_6" >
+      <layout class="QGridLayout" >
+       <item row="0" column="0" >
+        <widget class="QTabWidget" name="tabWidget" >
+         <property name="currentIndex" >
+          <number>0</number>
+         </property>
+         <widget class="QWidget" name="tabRSACards" >
+          <attribute name="title" >
+           <string>RSA Cards</string>
+          </attribute>
+         </widget>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
-   </widget>
-  </widget>
-  <widget class="QGroupBox" name="groupBox" >
-   <property name="geometry" >
-    <rect>
-     <x>130</x>
-     <y>350</y>
-     <width>721</width>
-     <height>151</height>
-    </rect>
-   </property>
-   <property name="title" >
-    <string>Logmessage</string>
-   </property>
-   <layout class="QGridLayout" >
-    <property name="margin" >
-     <number>9</number>
-    </property>
-    <property name="spacing" >
-     <number>6</number>
-    </property>
-    <item row="0" column="0" >
-     <widget class="QListWidget" name="listWidgetLogMessage" />
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="layoutWidget" >
-   <property name="geometry" >
-    <rect>
-     <x>10</x>
-     <y>510</y>
-     <width>841</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" >
-    <property name="margin" >
-     <number>0</number>
-    </property>
-    <property name="spacing" >
-     <number>6</number>
-    </property>
-    <item>
-     <widget class="QPushButton" name="btnQuit" >
-      <property name="minimumSize" >
-       <size>
-        <width>110</width>
-        <height>26</height>
-       </size>
+   </item>
+   <item row="1" column="1" >
+    <widget class="QGroupBox" name="groupBox" >
+     <property name="title" >
+      <string>Logmessage</string>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="leftMargin" >
+       <number>9</number>
       </property>
-      <property name="maximumSize" >
-       <size>
-        <width>110</width>
-        <height>26</height>
-       </size>
+      <property name="topMargin" >
+       <number>9</number>
       </property>
-      <property name="text" >
-       <string>&amp;Quit</string>
+      <property name="rightMargin" >
+       <number>9</number>
       </property>
-     </widget>
-    </item>
-    <item>
-     <spacer>
-      <property name="orientation" >
-       <enum>Qt::Horizontal</enum>
+      <property name="bottomMargin" >
+       <number>9</number>
       </property>
-      <property name="sizeHint" >
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
+      <property name="horizontalSpacing" >
+       <number>6</number>
       </property>
-     </spacer>
-    </item>
-    <item>
-     <widget class="QPushButton" name="btnClearLog" >
-      <property name="minimumSize" >
-       <size>
-        <width>110</width>
-        <height>26</height>
-       </size>
+      <property name="verticalSpacing" >
+       <number>6</number>
       </property>
-      <property name="maximumSize" >
-       <size>
-        <width>110</width>
-        <height>26</height>
-       </size>
-      </property>
-      <property name="text" >
-       <string>&amp;Clear log</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="btnSaveLog" >
-      <property name="minimumSize" >
-       <size>
-        <width>110</width>
-        <height>26</height>
-       </size>
-      </property>
-      <property name="maximumSize" >
-       <size>
-        <width>110</width>
-        <height>26</height>
-       </size>
-      </property>
-      <property name="text" >
-       <string>&amp;Save log</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <spacer>
-      <property name="orientation" >
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" >
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item>
-     <widget class="QPushButton" name="btnAbout" >
-      <property name="minimumSize" >
-       <size>
-        <width>110</width>
-        <height>26</height>
-       </size>
-      </property>
-      <property name="maximumSize" >
-       <size>
-        <width>110</width>
-        <height>26</height>
-       </size>
-      </property>
-      <property name="text" >
-       <string>&amp;About</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
+      <item row="0" column="0" >
+       <widget class="QListWidget" name="listWidgetLogMessage" />
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="1" >
+    <layout class="QHBoxLayout" >
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <property name="leftMargin" >
+      <number>0</number>
+     </property>
+     <property name="topMargin" >
+      <number>0</number>
+     </property>
+     <property name="rightMargin" >
+      <number>0</number>
+     </property>
+     <property name="bottomMargin" >
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QPushButton" name="btnQuit" >
+       <property name="minimumSize" >
+        <size>
+         <width>110</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="maximumSize" >
+        <size>
+         <width>110</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="text" >
+        <string>&amp;Quit</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnClearLog" >
+       <property name="minimumSize" >
+        <size>
+         <width>110</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="maximumSize" >
+        <size>
+         <width>110</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="text" >
+        <string>&amp;Clear log</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnSaveLog" >
+       <property name="minimumSize" >
+        <size>
+         <width>110</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="maximumSize" >
+        <size>
+         <width>110</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="text" >
+        <string>&amp;Save log</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnAbout" >
+       <property name="minimumSize" >
+        <size>
+         <width>110</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="maximumSize" >
+        <size>
+         <width>110</width>
+         <height>26</height>
+        </size>
+       </property>
+       <property name="text" >
+        <string>&amp;About</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
  <tabstops>
   <tabstop>listWidgetCard</tabstop>
   <tabstop>tabWidget_3</tabstop>
