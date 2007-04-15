@@ -6,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>853</width>
-    <height>558</height>
+    <height>606</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -835,24 +835,6 @@
            <string>Money (Max, Min, Transfer)</string>
           </attribute>
           <layout class="QGridLayout" >
-           <property name="leftMargin" >
-            <number>9</number>
-           </property>
-           <property name="topMargin" >
-            <number>9</number>
-           </property>
-           <property name="rightMargin" >
-            <number>9</number>
-           </property>
-           <property name="bottomMargin" >
-            <number>9</number>
-           </property>
-           <property name="horizontalSpacing" >
-            <number>6</number>
-           </property>
-           <property name="verticalSpacing" >
-            <number>6</number>
-           </property>
            <item row="0" column="0" >
             <layout class="QHBoxLayout" >
              <property name="spacing" >
@@ -998,31 +980,145 @@
             </layout>
            </item>
            <item row="3" column="0" >
-            <widget class="QTreeWidget" name="treeWidget" >
-             <column>
+            <widget class="QComboBox" name="comboBoxMoneyTransfer" >
+             <item>
               <property name="text" >
-               <string/>
+               <string>BLOGs (BLOGs are merchant logs, e.g. they contain transactions in shops etc.)</string>
               </property>
-             </column>
+             </item>
+             <item>
+              <property name="text" >
+               <string>LLOGs (LLOGs are load/unload logs, these are logs about loading/unloading of the card at credit institutes)</string>
+              </property>
+             </item>
             </widget>
            </item>
            <item row="4" column="0" >
+            <widget class="QStackedWidget" name="stackedWidget_2" >
+             <property name="currentIndex" >
+              <number>0</number>
+             </property>
+             <widget class="QWidget" name="page_8" >
+              <layout class="QGridLayout" >
+               <item row="0" column="0" >
+                <widget class="QTreeWidget" name="treeWidgetMoneyTransferBLogs" >
+                 <property name="rootIsDecorated" >
+                  <bool>false</bool>
+                 </property>
+                 <column>
+                  <property name="text" >
+                   <string>Status</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text" >
+                   <string>bSEQ</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text" >
+                   <string>lSEQ</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text" >
+                   <string>hSEQ</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text" >
+                   <string>sSEQ</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text" >
+                   <string>KeyId</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text" >
+                   <string>Merchant</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text" >
+                   <string>Value</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text" >
+                   <string>Loaded</string>
+                  </property>
+                 </column>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="page_10" >
+              <layout class="QGridLayout" >
+               <item row="0" column="0" >
+                <widget class="QTreeWidget" name="treeWidgetMoneyTransferLLogs" >
+                 <property name="rootIsDecorated" >
+                  <bool>false</bool>
+                 </property>
+                 <column>
+                  <property name="text" >
+                   <string>Modified</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text" >
+                   <string>Status</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text" >
+                   <string>bSEQ</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text" >
+                   <string>lbSEQ</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text" >
+                   <string>Value</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text" >
+                   <string>Center Id</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text" >
+                   <string>Terminal Id</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text" >
+                   <string>TraceId</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text" >
+                   <string>Loaded</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text" >
+                   <string>Time</string>
+                  </property>
+                 </column>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+           </item>
+           <item row="5" column="0" >
             <layout class="QHBoxLayout" >
-             <property name="spacing" >
-              <number>6</number>
-             </property>
-             <property name="leftMargin" >
-              <number>0</number>
-             </property>
-             <property name="topMargin" >
-              <number>0</number>
-             </property>
-             <property name="rightMargin" >
-              <number>0</number>
-             </property>
-             <property name="bottomMargin" >
-              <number>0</number>
-             </property>
              <item>
               <widget class="QPushButton" name="btnMoneyCardLoad" >
                <property name="minimumSize" >
@@ -1038,7 +1134,7 @@
                 </size>
                </property>
                <property name="text" >
-                <string>&amp;Moneytransfer</string>
+                <string>Money information</string>
                </property>
               </widget>
              </item>
@@ -1049,11 +1145,21 @@
                </property>
                <property name="sizeHint" >
                 <size>
-                 <width>691</width>
+                 <width>40</width>
                  <height>20</height>
                 </size>
                </property>
               </spacer>
+             </item>
+             <item>
+              <widget class="QProgressBar" name="progressBarMoneyTransfer" >
+               <property name="value" >
+                <number>0</number>
+               </property>
+               <property name="textVisible" >
+                <bool>false</bool>
+               </property>
+              </widget>
              </item>
             </layout>
            </item>
@@ -2602,12 +2708,12 @@
    <slot>setCurrentIndex(int)</slot>
    <hints>
     <hint type="sourcelabel" >
-     <x>120</x>
-     <y>420</y>
+     <x>109</x>
+     <y>429</y>
     </hint>
     <hint type="destinationlabel" >
-     <x>130</x>
-     <y>420</y>
+     <x>251</x>
+     <y>381</y>
     </hint>
    </hints>
   </connection>
@@ -2618,12 +2724,12 @@
    <slot>setCurrentIndex(int)</slot>
    <hints>
     <hint type="sourcelabel" >
-     <x>811</x>
-     <y>98</y>
+     <x>229</x>
+     <y>45</y>
     </hint>
     <hint type="destinationlabel" >
-     <x>811</x>
-     <y>116</y>
+     <x>751</x>
+     <y>125</y>
     </hint>
    </hints>
   </connection>
@@ -2634,12 +2740,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel" >
-     <x>497</x>
-     <y>247</y>
+     <x>144</x>
+     <y>98</y>
     </hint>
     <hint type="destinationlabel" >
-     <x>512</x>
-     <y>254</y>
+     <x>239</x>
+     <y>113</y>
     </hint>
    </hints>
   </connection>
@@ -2650,12 +2756,28 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel" >
-     <x>493</x>
-     <y>233</y>
+     <x>144</x>
+     <y>98</y>
     </hint>
     <hint type="destinationlabel" >
-     <x>623</x>
-     <y>229</y>
+     <x>229</x>
+     <y>113</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboBoxMoneyTransfer</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>stackedWidget_2</receiver>
+   <slot>setCurrentIndex(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>485</x>
+     <y>163</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>485</x>
+     <y>178</y>
     </hint>
    </hints>
   </connection>

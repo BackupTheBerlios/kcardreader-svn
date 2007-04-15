@@ -58,6 +58,8 @@ QCardReader::QCardReader ( QWidget *parent, Qt::WFlags flags ) : QWidget ( paren
 
 	/* ComboBox Item Changed/Clicked */
 	connect ( comboBoxUseCardAs, SIGNAL ( currentIndexChanged ( int ) ), this, SLOT ( comboboxItemClicked ( int ) ) );
+	
+	progressBarMoneyTransfer->setVisible( false );
 
 	QDesktopWidget *desktop = qApp->desktop();
 	const QRect rect = desktop->availableGeometry ( desktop->primaryScreen() );
@@ -100,7 +102,7 @@ void QCardReader::slotAbout()
 	about += tr ( "<b>Gwenhywfar Version:</b>   " )  + gwenV + "<br/><br />";
 	about += tr ( "<b>This Program is released under the terms of the<br/>GNU GENERAL PUBLIC LICENSE Version 2, June 1991</b><br /><br />" );
 	about += tr ( "Special thanks to :<br />" );
-	about += tr ( "  Martin Preuss for libchipcard3 <a href=\"mailto:martin@libchipcard.de\">martin@libchipcard.de</a><br />" );
+	about += tr ( "  Martin Preuss for libchipcard3 <a href=\"mailto:martin [at] libchipcard [dot] de\">martin@libchipcard.de</a><br />" );
 
 	QMessageBox::about ( this, tr ( "About QCardReader" ), about );
 }
@@ -151,6 +153,7 @@ void QCardReader::slotCapacityProcessorPwd()
 /* TODO Money Card Data*/
 void QCardReader::slotMoneyCard()
 {
+	// treeWidgetMoneyTransfer
 	QStringList moneyMap, moneyMapAcc, tmpList;
 
 	QCRChipCard *qcrc = new QCRChipCard();
@@ -214,6 +217,7 @@ void QCardReader::slotMoneyCard()
 		}
 	}
 
+	/*
 	tmpList.clear();
 	moneyMapAcc = qcrc->getMoneyCardAccData ( listWidgetLogMessage );
 
@@ -232,6 +236,7 @@ void QCardReader::slotMoneyCard()
 		if ( tmpList.value ( 0 ) == "accountId" )
 			lineEditMoneyCardAccountId->setText ( tmpList.value ( 1 ) );
 	}
+	*/
 }
 
 /* TODO Money Card Load */
@@ -269,7 +274,9 @@ void QCardReader::slotMoneyCardLoad()
 	}
 
 
-	//moneyTransList = qcrc->getMoneyCardTransactionData( listWidgetLogMessage );
+	progressBarMoneyTransfer->setVisible( true );
+	qcrc->getMoneyCardTransaction( listWidgetLogMessage, treeWidgetMoneyTransferBLogs, treeWidgetMoneyTransferLLogs, progressBarMoneyTransfer);
+	progressBarMoneyTransfer->setVisible( false );
 }
 
 /* TODO KVK Card */

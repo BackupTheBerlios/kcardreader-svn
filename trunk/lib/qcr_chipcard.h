@@ -16,11 +16,28 @@
 *   Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
-/* Chipcard3/Gwen include */
+/* ChipCard3 include */
 #include <gwenhywfar/db.h>
+#include <gwenhywfar/version.h>
+
+#include <chipcard3/version.h>
 #include <chipcard3/chipcard3.h>
-#include <chipcard3/client/client.h>
+
 #include <chipcard3/client/card.h>
+#include <chipcard3/client/client.h>
+
+#include <chipcard3/client/cards/ddvcard.h>
+
+#include <chipcard3/client/cards/geldkarte.h>
+#include <chipcard3/client/cards/geldkarte_values.h>
+#include <chipcard3/client/cards/geldkarte_blog.h>
+#include <chipcard3/client/cards/geldkarte_llog.h>
+
+#include <chipcard3/client/cards/kvkcard.h>
+#include <chipcard3/client/cards/memorycard.h>
+#include <chipcard3/client/cards/processorcard.h>
+#include <chipcard3/client/cards/starcos.h>
+
 
 /* Qt4 include files */
 #include <QtCore>
@@ -48,14 +65,14 @@ class QCRChipCard
 		QMap<QString, QString> getKVKCardData ( QListWidget *qlw );
 
 		/* TODO Funtion Moneycard */
-		QStringList getMoneyCardData ( QListWidget *qlw );
-		QStringList getMoneyCardAccData ( QListWidget *qlw );
-		QStringList getMoneyCardTransactionData ( QListWidget *qlw );
+		QStringList getMoneyCardData( QListWidget *qlw );
+		QStringList getMoneyCardTransaction( QListWidget *qlw, QTreeWidget *qtw, QTreeWidget *qtw1, QProgressBar *qpb = 0 );
+		
 		QMap<QString, double> getMoneyCardMoneyData ( QListWidget *qlw );
 
 	private:
-		bool init ( LC_CLIENT * cl );
-		bool deinit ( LC_CARD *card, LC_CLIENT * cl, LC_CLIENT_RESULT res );
+		bool init( QListWidget *qlw );
+		bool deinit( LC_CARD *card, LC_CLIENT * cl, LC_CLIENT_RESULT res );
 		QString errorMsg ( LC_CARD *card, LC_CLIENT_RESULT res, QListWidget *qlw );
 
 		unsigned int memCap;
@@ -65,4 +82,18 @@ class QCRChipCard
 		QMap<QString, QString> kvkCardData;
 		QStringList memCardData;
 		QMap<QString, double> moneyCardMoneyData;
+		
+		LC_CLIENT *cl;
+		LC_CLIENT_RESULT res;
+		
+		LC_CARD *card;		
+		
+		LC_GELDKARTE_BLOG_LIST2 *bll;
+		LC_GELDKARTE_LLOG_LIST2 *Lll;
+		LC_GELDKARTE_VALUES *values;
+		
+		GWEN_DB_NODE *dbData;
+		GWEN_BUFFER *memBuff;
+		
+		int rv;
 };
